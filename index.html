@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+Malayalam:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --night: #0a0804;
+  --deep: #110e07;
+  --bark: #1c1508;
+  --amber: #c49a2a;
+  --gold: #e8b84b;
+  --gold-pale: #f5d98a;
+  --ember: #c0541a;
+  --cream: #f0e6d0;
+  --parchment: #e8d9be;
+}
+
+body {
+  background: var(--night);
+  color: var(--cream);
+  font-family: 'EB Garamond', 'Noto Serif Malayalam', serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+.cursor {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.15s ease;
+  mix-blend-mode: difference;
+}
+.cursor-ring {
+  position: fixed;
+  width: 32px; height: 32px;
+  border: 1px solid rgba(232,184,75,0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transition: all 0.4s ease;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1000;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 60%, rgba(196,154,42,0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 40% at 30% 20%, rgba(192,84,26,0.07) 0%, transparent 60%),
+    var(--night);
+}
+
+.hero-rings {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px; height: 900px;
+  pointer-events: none;
+}
+.ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(196,154,42,0.07);
+  animation: ringPulse 8s ease-in-out infinite;
+}
+.ring:nth-child(1) { width: 180px; height: 180px; }
+.ring:nth-child(2) { width: 360px; height: 360px; animation-delay: 1.5s; border-color: rgba(196,154,42,0.05); }
+.ring:nth-child(3) { width: 560px; height: 560px; animation-delay: 3s; border-color: rgba(196,154,42,0.035); }
+.ring:nth-child(4) { width: 760px; height: 760px; animation-delay: 4.5s; border-color: rgba(196,154,42,0.02); }
+@keyframes ringPulse {
+  0%, 100% { opacity: 0.5; transform: translate(-50%,-50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%,-50%) scale(1.03); }
+}
+
+.particles { position: absolute; inset: 0; pointer-events: none; }
+.particle {
+  position: absolute;
+  width: 2px; height: 2px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: floatUp linear infinite;
+  opacity: 0;
+}
+@keyframes floatUp {
+  0% { opacity: 0; transform: translateY(0) scale(1); }
+  20% { opacity: 0.5; }
+  80% { opacity: 0.2; }
+  100% { opacity: 0; transform: translateY(-100px) scale(0); }
+}
+
+.hero-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.55em;
+  text-transform: uppercase;
+  color: var(--amber);
+  opacity: 0;
+  animation: fadeUp 1.2s ease 0.3s forwards;
+  margin-bottom: 2.5rem;
+}
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(3.5rem, 11vw, 9rem);
+  line-height: 0.92;
+  color: var(--cream);
+  opacity: 0;
+  animation: fadeUp 1.4s ease 0.6s forwards;
+}
+.hero-name-ml {
+  display: block;
+  font-size: clamp(1.4rem, 3.5vw, 2.8rem);
+  font-family: 'Noto Serif Malayalam', serif;
+  font-weight: 300;
+  color: var(--gold);
+  margin-top: 0.6rem;
+  opacity: 0;
+  animation: fadeUp 1.4s ease 0.9s forwards;
+}
+.hero-line {
+  display: flex; align-items: center; gap: 1.5rem;
+  margin: 2.8rem auto; width: 240px;
+  opacity: 0; animation: fadeUp 1s ease 1.2s forwards;
+}
+.hero-line::before { content:''; flex:1; height:1px; background:linear-gradient(90deg,transparent,var(--amber)); }
+.hero-line::after  { content:''; flex:1; height:1px; background:linear-gradient(90deg,var(--amber),transparent); }
+.diamond { width:6px; height:6px; background:var(--gold); transform:rotate(45deg); }
+.hero-tagline {
+  font-family: 'Noto Serif Malayalam', serif;
+  font-weight: 300;
+  font-size: clamp(0.88rem, 1.8vw, 1.1rem);
+  color: rgba(240,230,208,0.5);
+  line-height: 2;
+  opacity: 0;
+  animation: fadeUp 1s ease 1.5s forwards;
+}
+.scroll-cue {
+  position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
+  opacity: 0; animation: fadeUp 1s ease 2s forwards;
+}
+.scroll-text { font-size:0.62rem; letter-spacing:0.45em; text-transform:uppercase; color:rgba(240,230,208,0.25); }
+.scroll-bar {
+  width: 1px; height: 55px;
+  background: linear-gradient(to bottom, var(--amber), transparent);
+  animation: barPulse 2.5s ease-in-out infinite;
+}
+@keyframes barPulse { 0%,100%{opacity:.4;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.15)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+
+/* NAV */
+.nav {
+  position: sticky; top: 0; z-index: 500;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.2rem 4rem;
+  background: rgba(10,8,4,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(196,154,42,0.1);
+}
+.nav-brand { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:500; color:var(--gold); letter-spacing:0.05em; }
+.nav-links { display:flex; gap:2.5rem; list-style:none; }
+.nav-links a {
+  color: rgba(240,230,208,0.4); text-decoration:none;
+  font-size:0.7rem; letter-spacing:0.25em; text-transform:uppercase;
+  transition:color .3s; position:relative; padding-bottom:2px;
+}
+.nav-links a::after { content:''; position:absolute; bottom:0; left:0; width:0; height:1px; background:var(--gold); transition:width .3s; }
+.nav-links a:hover { color:var(--gold-pale); }
+.nav-links a:hover::after { width:100%; }
+
+/* SECTIONS */
+.section { max-width:900px; margin:0 auto; padding:8rem 3rem; }
+.eyebrow { font-size:.65rem; letter-spacing:.5em; text-transform:uppercase; color:var(--amber); margin-bottom:1.5rem; opacity:.8; }
+.heading {
+  font-family:'Cormorant Garamond',serif; font-weight:300;
+  font-size:clamp(2.2rem,5vw,4rem); line-height:1.1; color:var(--cream); margin-bottom:3rem;
+}
+.heading-ml { font-family:'Noto Serif Malayalam',serif; font-weight:400; font-size:clamp(1.8rem,4vw,3.2rem); }
+.heading em { font-style:italic; color:var(--gold); }
+
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+.body { font-size:1.05rem; line-height:2.1; color:rgba(240,230,208,.7); }
+.body.ml { font-family:'Noto Serif Malayalam',serif; font-size:1.05rem; line-height:2.2; }
+.body + .body { margin-top:1.8rem; }
+
+.blockquote {
+  position:relative; padding:3rem 2.5rem 3rem 3.5rem; margin:5rem 0;
+  border-left:1px solid var(--amber);
+  background:linear-gradient(135deg,rgba(196,154,42,.05),transparent 60%);
+}
+.blockquote::before {
+  content:'\201C'; position:absolute; top:-.5rem; left:1.5rem;
+  font-family:'Cormorant Garamond',serif; font-size:5rem; color:var(--amber); opacity:.25; line-height:1;
+}
+.blockquote p {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:clamp(1.25rem,2.5vw,1.75rem); line-height:1.65; color:var(--parchment);
+}
+.blockquote p.ml { font-family:'Noto Serif Malayalam',serif; font-style:normal; font-size:clamp(1.1rem,2vw,1.4rem); }
+
+/* LEGENDS BAND */
+.legends-band {
+  width:100%; background:var(--deep);
+  border-top:1px solid rgba(196,154,42,.07);
+  border-bottom:1px solid rgba(196,154,42,.07);
+  padding:8rem 0; position:relative; overflow:hidden;
+}
+.legends-band::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse 80% 100% at 50% 50%, rgba(196,154,42,.05) 0%, transparent 70%);
+}
+.legends-inner { max-width:900px; margin:0 auto; padding:0 3rem; }
+.legends-top { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:end; margin-bottom:5rem; }
+.legends-top p { font-size:.98rem; line-height:2; color:rgba(240,230,208,.5); }
+
+.legend-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(196,154,42,.08); }
+.legend-card {
+  background:var(--deep); padding:2.5rem 2rem; position:relative; overflow:hidden;
+  transition:background .4s; text-decoration:none; display:block;
+}
+.legend-card::after { content:''; position:absolute; bottom:0; left:0; width:0; height:1px; background:var(--gold); transition:width .5s; }
+.legend-card:hover { background:rgba(196,154,42,.06); }
+.legend-card:hover::after { width:100%; }
+.l-wiki { margin-top:1.2rem; font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:var(--amber); opacity:0; transition:opacity .3s; }
+.legend-card:hover .l-wiki { opacity:.7; }
+.l-num { font-family:'Cormorant Garamond',serif; font-size:.72rem; color:var(--amber); letter-spacing:.2em; margin-bottom:1.2rem; opacity:.45; }
+.l-name { font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:500; color:var(--cream); line-height:1.2; margin-bottom:.5rem; }
+.l-inst { font-size:.76rem; color:var(--amber); letter-spacing:.1em; margin-bottom:.5rem; }
+.l-note { font-size:.74rem; font-style:italic; color:rgba(240,230,208,.28); line-height:1.5; }
+
+/* FAMILY */
+.family-row { display:grid; grid-template-columns:repeat(5,1fr); gap:2px; background:rgba(196,154,42,.07); margin-top:4rem; }
+.fam-card { background:var(--bark); padding:2.5rem 1.2rem 2rem; text-align:center; transition:background .3s; }
+.fam-card:hover { background:rgba(196,154,42,.07); }
+.fam-initial { font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:300; color:var(--amber); opacity:.35; margin-bottom:1.2rem; line-height:1; }
+.fam-name { font-family:'Noto Serif Malayalam',serif; font-size:.9rem; font-weight:500; color:var(--cream); margin-bottom:.4rem; }
+.fam-role { font-size:.67rem; letter-spacing:.12em; text-transform:uppercase; color:var(--amber); opacity:.55; }
+.fam-photo { padding:0 0 1.5rem; overflow:hidden; }
+.fam-photo img { width:100%; aspect-ratio:1/1; object-fit:cover; object-position:top; display:block; margin-bottom:1.2rem; filter:grayscale(20%) sepia(15%); transition:filter .4s; }
+.fam-photo:hover img { filter:grayscale(0%) sepia(0%); }
+.fam-photo .fam-name { padding:0 1.2rem; }
+.fam-photo .fam-role { padding:0 1.2rem; }
+
+/* GALLERY */
+.gallery-band { background:var(--bark); padding:8rem 0; }
+.gallery-inner { max-width:900px; margin:0 auto; padding:0 3rem; }
+.gallery-grid {
+  display:grid; grid-template-columns:2fr 1fr 1fr;
+  grid-template-rows:240px 240px; gap:3px; margin-top:4rem;
+}
+.gallery-grid > :first-child { grid-row:span 2; }
+.gcell {
+  background:rgba(196,154,42,.03); border:1px dashed rgba(196,154,42,.1);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:1rem; transition:background .3s; cursor:default;
+}
+.gcell:hover { background:rgba(196,154,42,.07); }
+.gcell svg { opacity:.18; }
+.gcell-label { font-size:.63rem; letter-spacing:.28em; text-transform:uppercase; color:rgba(240,230,208,.2); }
+.gcell-photo { padding:0; position:relative; overflow:hidden; border:none; }
+.gcell-photo img { width:100%; height:100%; object-fit:cover; object-position:top center; display:block; filter:sepia(20%) grayscale(10%); transition:filter .5s, transform .5s; }
+.gcell-photo:hover img { filter:sepia(0%) grayscale(0%); transform:scale(1.03); }
+.gcell-caption { position:absolute; bottom:0; left:0; right:0; padding:1.5rem 1.2rem .9rem; background:linear-gradient(to top, rgba(10,8,4,.85), transparent); font-family:'Cormorant Garamond',serif; font-size:.85rem; font-style:italic; color:var(--gold-pale); letter-spacing:.04em; }
+.gallery-cta { display:inline-block; margin-top:4rem; font-size:.63rem; letter-spacing:.28em; text-transform:uppercase; color:var(--amber); border:1px solid rgba(196,154,42,.3); padding:.45rem .95rem; }
+
+/* MEMORY */
+.memory-wrap { max-width:660px; margin:0 auto; padding:8rem 3rem; text-align:center; }
+.gform-wrap {
+  margin-top: 3rem;
+  border: 1px solid rgba(196,154,42,0.15);
+  background: rgba(255,255,255,0.02);
+  overflow: hidden;
+}
+.gform-wrap iframe { display:block; }
+.form { margin-top:4rem; text-align:left; }
+.field { position:relative; margin-bottom:2.2rem; }
+.field input, .field textarea {
+  width:100%; background:transparent; border:none; border-bottom:1px solid rgba(196,154,42,.18);
+  color:var(--cream); font-family:'Noto Serif Malayalam','EB Garamond',serif; font-size:1rem;
+  padding:1rem 0; outline:none; transition:border-color .3s; resize:none;
+}
+.field input:focus, .field textarea:focus { border-bottom-color:var(--gold); }
+.field input::placeholder, .field textarea::placeholder { color:rgba(240,230,208,.18); font-style:italic; }
+.field label {
+  position:absolute; top:1rem; left:0;
+  font-size:.7rem; letter-spacing:.25em; text-transform:uppercase;
+  color:rgba(196,154,42,.45); pointer-events:none; transition:all .3s;
+}
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label,
+.field textarea:focus + label,
+.field textarea:not(:placeholder-shown) + label { top:-.8rem; font-size:.58rem; color:var(--amber); }
+
+.btn-submit {
+  background:transparent; border:1px solid rgba(196,154,42,.4);
+  color:var(--gold-pale); padding:1rem 3rem;
+  font-family:'EB Garamond',serif; font-size:.85rem; letter-spacing:.3em; text-transform:uppercase;
+  cursor:pointer; position:relative; overflow:hidden; transition:all .4s;
+}
+.btn-submit::before {
+  content:''; position:absolute; inset:0; background:var(--gold);
+  transform:translateX(-100%); transition:transform .4s; z-index:-1;
+}
+.btn-submit:hover { color:var(--night); border-color:var(--gold); }
+.btn-submit:hover::before { transform:translateX(0); }
+
+/* ORNAMENT */
+.ornament { display:flex; align-items:center; gap:2rem; padding:0 3rem; max-width:900px; margin:0 auto; opacity:.2; }
+.ornament::before,.ornament::after { content:''; flex:1; height:1px; background:var(--amber); }
+.orn-glyph { font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--amber); }
+
+/* FOOTER */
+footer { padding:4rem 3rem; text-align:center; border-top:1px solid rgba(196,154,42,.06); }
+footer p { font-family:'Cormorant Garamond',serif; font-size:1rem; color:rgba(240,230,208,.18); letter-spacing:.2em; }
+footer p span { color:var(--amber); opacity:.5; }
+
+/* REVEAL */
+.reveal { opacity:0; transform:translateY(36px); transition:opacity .9s ease, transform .9s ease; }
+.reveal.in { opacity:1; transform:translateY(0); }
+.delay1 { transition-delay:.15s; }
+.delay2 { transition-delay:.3s; }
+
+/* ── HAMBURGER ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+  z-index: 600;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+  transition: all 0.3s ease;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10,8,4,0.97);
+  z-index: 550;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  color: rgba(240,230,208,0.7);
+  text-decoration: none;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  transition: color 0.3s;
+}
+.mobile-menu a:hover { color: var(--gold); }
+
+/* ── TABLET (768–1024px) ── */
+@media(max-width:1024px){
+  .section { padding: 6rem 2.5rem; }
+  .legends-inner, .gallery-inner { padding: 0 2.5rem; }
+  .hero-rings { width: 600px; height: 600px; }
+  .ring:nth-child(4) { width: 560px; height: 560px; }
+}
+
+/* ── MOBILE (≤768px) ── */
+@media(max-width:768px){
+  /* cursor off on touch */
+  .cursor, .cursor-ring { display: none; }
+  body { cursor: auto; }
+
+  /* nav */
+  .nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+
+  /* hero */
+  .hero { min-height: 100svh; }
+  .hero-rings { width: 360px; height: 360px; }
+  .ring:nth-child(3) { width: 340px; height: 340px; }
+  .ring:nth-child(4) { display: none; }
+
+  /* sections */
+  .section { padding: 4.5rem 1.5rem; }
+  .two-col { grid-template-columns: 1fr; gap: 2rem; }
+  .blockquote { padding: 2rem 1.5rem 2rem 2rem; margin: 3rem 0; }
+
+  /* legends */
+  .legends-band { padding: 5rem 0; }
+  .legends-inner { padding: 0 1.5rem; }
+  .legends-top { grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 3rem; }
+  .legend-grid { grid-template-columns: 1fr; }
+  .legend-card { padding: 1.8rem 1.5rem; }
+
+  /* family */
+  .family-row { grid-template-columns: repeat(2, 1fr); }
+
+  /* gallery */
+  .gallery-band { padding: 5rem 0; }
+  .gallery-inner { padding: 0 1.5rem; }
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 280px 180px 180px 180px 180px;
+  }
+  .gallery-grid > :first-child { grid-row: span 1; }
+
+  /* memory */
+  .memory-wrap { padding: 4.5rem 1.5rem; }
+
+  /* ornament */
+  .ornament { padding: 0 1.5rem; }
+}
+
+/* ── SMALL MOBILE (≤400px) ── */
+@media(max-width:400px){
+  .family-row { grid-template-columns: 1fr; }
+  .hero-name { font-size: 3rem; }
+  .nav-brand { font-size: 0.9rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-portrait" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+    <img src="abdul_kadhar.png" alt="" style="height:90%;max-height:700px;object-fit:contain;object-position:top;opacity:0.07;filter:sepia(40%) blur(1px);mask-image:radial-gradient(ellipse 60% 80% at 50% 40%,black 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 60% 80% at 50% 40%,black 30%,transparent 75%);">
+  </div>
+  <div class="hero-rings">
+    <div class="ring"></div><div class="ring"></div>
+    <div class="ring"></div><div class="ring"></div>
+  </div>
+  <div class="particles" id="particles"></div>
+
+  <div class="hero-eyebrow">സ്മരണിക · In Memoriam · Kochi</div>
+  <h1 class="hero-name">
+    Abdul Khadar<br>Vakeel
+    <span class="hero-name-ml">അബ്ദുൾ ഖാദർ വക്കീൽ</span>
+  </h1>
+  <div class="hero-line"><div class="diamond"></div></div>
+  <p class="hero-tagline">
+    കൊച്ചിയുടെ നിശ്ശബ്ദ സംഗീത വിപ്ലവം<br>
+    <em style="font-size:.85em;opacity:.6;font-style:italic;">The Silent Musical Revolution of Kochi</em>
+  </p>
+  <div class="scroll-cue">
+    <span class="scroll-text">Discover</span>
+    <div class="scroll-bar"></div>
+  </div>
+</section>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">Abdul Khadar Vakeel</div>
+  <ul class="nav-links">
+    <li><a href="#story">Story</a></li>
+    <li><a href="#legends">Legends</a></li>
+    <li><a href="#family">Family</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#memories">Memories</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#story" class="mm-link">Story</a>
+  <a href="#legends" class="mm-link">Legends</a>
+  <a href="#family" class="mm-link">Family</a>
+  <a href="#gallery" class="mm-link">Gallery</a>
+  <a href="#memories" class="mm-link">Memories</a>
+</div>
+
+<!-- STORY -->
+<div id="story">
+<div class="section">
+  <div class="reveal">
+    <div class="eyebrow">The Legacy · ജീവിത കഥ</div>
+    <h2 class="heading heading-ml">നിശ്ശബ്ദ<br><em>സംഗീത വിപ്ലവം</em></h2>
+  </div>
+  <div class="two-col reveal delay1">
+    <div>
+      <p class="body ml">അന്ന് കൊച്ചിക്ക് മറ്റൊരു താളമായിരുന്നു. റേഡിയോകളിൽ മുഴങ്ങുന്ന ചലച്ചിത്ര ഗാനങ്ങളും മാപ്പിളപ്പാട്ടുകളുമായിരുന്നു കൊച്ചിയുടെ സംഗീത ലോകം. എന്നാൽ ഈ പരിചിത ഈണങ്ങൾക്കിടയിലേക്ക്, തബലയുടെയും സാരംഗിയുടെയും അകമ്പടിയോടെ ഹിന്ദുസ്ഥാനി സംഗീതത്തിന്റെ ഗാംഭീര്യം അബ്ദുൾ ഖാദർ വക്കീൽ കൊണ്ടുവന്നു.</p>
+      <p class="body ml">അതൊരു നിശ്ശബ്ദ വിപ്ലവത്തിന്റെ തുടക്കമായിരുന്നു. മട്ടാഞ്ചേരിയിലെയും ഫോർട്ട് കൊച്ചിയിലെയും സാധാരണക്കാർക്ക് പോലും ഇതിഹാസങ്ങളുടെ സംഗീതം അപ്രാപ്യമല്ലെന്ന് അദ്ദേഹം തെളിയിച്ചു.</p>
+    </div>
+    <div>
+      <p class="body ml">സിനിമ പാട്ടുകൾക്കും മാപ്പിളപ്പാട്ടുകൾക്കുമപ്പുറം, ആത്മാവിനെ സ്പർശിക്കുന്ന ഗസലുകളുടെയും ശാസ്ത്രീയ സംഗീതത്തിന്റെയും പുതിയൊരു ലോകം അദ്ദേഹം കൊച്ചിക്ക് പരിചയപ്പെടുത്തി.</p>
+      <p class="body ml">ഗസൽ ഗായകൻ ഉമ്പായിയുടെ സംഗീത ജീവിതത്തിന് കൃത്യമായ ദിശാബോധം നൽകിയതും വക്കീൽ സാഹിബുമായുള്ള ആ ബന്ധമായിരുന്നു. കൊച്ചിയുടെ ഗസൽ പാരമ്പര്യം ഇന്നും നിലനിൽക്കുന്നത് അദ്ദേഹം പകർന്നു നൽകിയ ആ ആവേശത്തിലൂടെയാണ്.</p>
+    </div>
+  </div>
+
+  <div class="blockquote reveal">
+    <p class="ml">"കൊച്ചിയിലെ കായൽക്കാറ്റിന് ഹിന്ദുസ്ഥാനി സംഗീതത്തിന്റെ താളം നൽകിയത് അബ്ദുൽ ഖാദർ വക്കീലിന്റെ ആ വിപ്ലവകരമായ പരിശ്രമമായിരുന്നു..."</p>
+  </div>
+
+  <div class="two-col reveal">
+    <div>
+      <div class="eyebrow">The Mehfils · സംഗീത സദസ്സ്</div>
+      <h3 class="heading" style="font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:1.5rem;">An Open<br><em>Courtyard</em></h3>
+      <p class="body ml">കൊച്ചിക്കാർ സ്നേഹത്തോടെ 'ഭായ്' എന്ന് വിളിച്ചിരുന്ന എം.എച്ച്. മെഹബൂബ് വക്കീൽ സാഹിബിന്റെ കൂടെ പലപ്പോഴും ഉണ്ടായിരുന്നു. അദ്ദേഹം ഒരുക്കിയ സംഗീത സദസ്സുകളിലെല്ലാം മെഹബൂബ് ഭായിയുടെ സാന്നിധ്യം ഉണ്ടായിരുന്നു.</p>
+    </div>
+    <div style="padding-top:3.5rem;">
+      <p class="body ml">അദ്ദേഹത്തിന്റെ നടുമുറ്റത്തെ ആ സംഗീത സദസ്സുകൾ ഉമ്പായിയെപ്പോലെയുള്ള പല കലാകാരന്മാരെയും ഗസലുകളുടെ ആഴങ്ങളിലേക്ക് ആഴ്ന്നിറങ്ങാൻ പ്രേരിപ്പിച്ചു. ആ നടുമുറ്റം ഒരു ലോകം തന്നെ ആയിരുന്നു.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- LEGENDS -->
+<div class="legends-band" id="legends">
+  <div class="legends-inner">
+    <div class="legends-top reveal">
+      <div>
+        <div class="eyebrow">Musical Legends · ഇതിഹാസങ്ങൾ</div>
+        <h2 class="heading">Who Came<br>to <em>Kochi</em></h2>
+      </div>
+      <p>These maestros accepted Vakeel Sahib's personal invitation and graced Kochi with their presence — many for the very first time. Their music echoed through the courtyards of Mattancherry.</p>
+    </div>
+    <div class="legend-grid reveal delay1">
+      <a class="legend-card" href="https://en.wikipedia.org/wiki/Ravi_Shankar" target="_blank" rel="noopener"><div class="l-num">01</div><div class="l-name">Pandit Ravi Shankar</div><div class="l-inst">Sitar</div><div class="l-note">First visit to Kochi — brought at Vakeel Sahib's personal invitation</div><div class="l-wiki">Wikipedia ↗</div></a>
+      <a class="legend-card" href="https://en.wikipedia.org/wiki/Bismillah_Khan" target="_blank" rel="noopener"><div class="l-num">02</div><div class="l-name">Ustad Bismillah Khan</div><div class="l-inst">Shehnai</div><div class="l-note">The legendary voice of the shehnai graced these shores</div><div class="l-wiki">Wikipedia ↗</div></a>
+      <a class="legend-card" href="https://en.wikipedia.org/wiki/Alla_Rakha" target="_blank" rel="noopener"><div class="l-num">03</div><div class="l-name">Ustad Alla Rakha</div><div class="l-inst">Tabla</div><div class="l-note">Master of rhythm, honoured guest of the mehfil</div><div class="l-wiki">Wikipedia ↗</div></a>
+      <a class="legend-card" href="https://en.wikipedia.org/wiki/Begum_Akhtar" target="_blank" rel="noopener"><div class="l-num">04</div><div class="l-name">Begum Akhtar</div><div class="l-inst">Ghazal · Thumri</div><div class="l-note">The Mallika-e-Ghazal herself performed in Kochi</div><div class="l-wiki">Wikipedia ↗</div></a>
+      <a class="legend-card" href="https://en.wikipedia.org/wiki/Talat_Mahmood" target="_blank" rel="noopener"><div class="l-num">05</div><div class="l-name">Talat Mahmood</div><div class="l-inst">Vocalist</div><div class="l-note">The velvet voice of a golden era</div><div class="l-wiki">Wikipedia ↗</div></a>
+      <a class="legend-card" href="https://en.wikipedia.org/wiki/Umbayi" target="_blank" rel="noopener"><div class="l-num">06</div><div class="l-name">Umbayi</div><div class="l-inst">Ghazal · Kerala</div><div class="l-note">His musical direction shaped profoundly by Vakeel Sahib</div><div class="l-wiki">Wikipedia ↗</div></a>
+    </div>
+  </div>
+</div>
+
+<!-- FAMILY -->
+<div id="family">
+<div class="section">
+  <div class="reveal">
+    <div class="eyebrow">The Family · കുടുംബം</div>
+    <h2 class="heading heading-ml">ഫാത്തിമ – <em>അബ്ദുൾ ഖാദർ</em><br>ദമ്പതികൾ</h2>
+    <p class="body ml" style="max-width:540px;">ആ വലിയ സംഗീത പാരമ്പര്യം ഇന്നും കൊച്ചിയിൽ നിലനിൽക്കുന്നത് ഈ കുടുംബത്തിലൂടെയാണ്. സ്നേഹത്തിന്റെയും സംഗീതത്തിന്റെയും ആ വലിയ ലോകത്ത് അവർ ഇന്നും ഒന്നിച്ചു സഞ്ചരിക്കുന്നു.</p>
+  </div>
+  <div class="family-row reveal delay1">
+    <div class="fam-card fam-photo"><img src="Shoukath.jpg" alt="ഷൗക്കത്ത് അലി"><div class="fam-name">ഷൗക്കത്ത് അലി</div><div class="fam-role">Tabla</div></div>
+    <div class="fam-card fam-photo"><img src="Shabeeba.jpg" alt="ഷബീബ"><div class="fam-name">ഷബീബ</div><div class="fam-role">Vocalist</div></div>
+    <div class="fam-card"><div class="fam-initial">ഷ</div><div class="fam-name">ഷബാന</div><div class="fam-role">Vocalist</div></div>
+    <div class="fam-card"><div class="fam-initial">മ</div><div class="fam-name">മൻസൂർ</div><div class="fam-role">High Court</div></div>
+    <div class="fam-card"><div class="fam-initial">വ</div><div class="fam-name">വാഹിദ</div><div class="fam-role">Family</div></div>
+  </div>
+</div>
+</div>
+
+<!-- GALLERY -->
+<div class="gallery-band" id="gallery">
+  <div class="gallery-inner">
+    <div class="reveal">
+      <div class="eyebrow">Gallery · ചിത്രശേഖരം</div>
+      <h2 class="heading">Rare <em>Moments</em></h2>
+      <p class="body" style="max-width:460px;">Precious photographs of Vakeel Sahib and the legends of music who came to Kochi — moments when history was quietly being made.</p>
+    </div>
+    <div class="gallery-grid reveal delay1">
+      <div class="gcell gcell-photo"><img src="abdul_kadhar.png" alt="Abdul Khadar Vakeel"><div class="gcell-caption">Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ</div></div>
+      <div class="gcell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span class="gcell-label">Mehfil</span></div>
+      <div class="gcell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span class="gcell-label">Legends</span></div>
+      <div class="gcell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span class="gcell-label">Family</span></div>
+      <div class="gcell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span class="gcell-label">Kochi</span></div>
+    </div>
+    <div class="gallery-cta reveal">ഉടൻ · Coming Soon</div>
+  </div>
+</div>
+
+<!-- MEMORIES -->
+<div id="memories">
+<div class="memory-wrap">
+  <div class="reveal">
+    <div class="eyebrow">Share · ഓർമ്മകൾ</div>
+    <h2 class="heading">Your<br><em>Memories</em></h2>
+    <p class="body ml" style="margin-top:1.5rem;opacity:.55;font-size:.95rem;line-height:2;">
+      അബ്ദുൾ ഖാദർ വക്കീലിനെ നേരിട്ട് അറിയുന്നവരോ അദ്ദേഹത്തിന്റെ മെഹ്ഫിലുകളിൽ പങ്കെടുത്തവരോ — ആ ഓർമ്മകൾ ഇവിടെ പങ്കുവെക്കാം.
+    </p>
+  </div>
+  <div class="reveal delay1 gform-wrap">
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSfU5q8OJitdVWc35B9xTFFh094qE76Y0zM8D_hrfm-ZNIZ1iQ/viewform?embedded=true"
+      width="100%"
+      height="780"
+      frameborder="0"
+      marginheight="0"
+      marginwidth="0"
+      style="background:transparent;">
+      Loading…
+    </iframe>
+  </div>
+</div>
+</div>
+
+<div class="ornament"><span class="orn-glyph">✦</span></div>
+
+<footer>
+  <p>അബ്ദുൾ ഖാദർ വക്കീൽ സ്മരണിക</p>
+  <p style="margin-top:.6rem;"><span>കൊച്ചിയുടെ സംഗീത പൈതൃകം · The Musical Heritage of Kochi</span></p>
+</footer>
+
+<script>
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+document.querySelectorAll('.mm-link').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+});
+
+// Cursor — desktop only
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx=-100,my=-100,rx=-100,ry=-100;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function tick(){
+  cur.style.left=mx-4+'px'; cur.style.top=my-4+'px';
+  rx+=(mx-rx)*.1; ry+=(my-ry)*.1;
+  ring.style.left=rx-16+'px'; ring.style.top=ry-16+'px';
+  requestAnimationFrame(tick);
+})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.transform='scale(2.5)';ring.style.transform='scale(1.5)';});
+  el.addEventListener('mouseleave',()=>{cur.style.transform='scale(1)';ring.style.transform='scale(1)';});
+});
+
+// Particles
+const pc=document.getElementById('particles');
+for(let i=0;i<30;i++){
+  const p=document.createElement('div');
+  p.className='particle';
+  p.style.cssText=`left:${Math.random()*100}%;bottom:${Math.random()*50}%;width:${1+Math.random()*2}px;height:${1+Math.random()*2}px;animation-duration:${5+Math.random()*9}s;animation-delay:${Math.random()*7}s;`;
+  pc.appendChild(p);
+}
+
+// Reveal
+const revs=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+},{threshold:.1});
+revs.forEach(r=>obs.observe(r));
+
+// Form
+function submitForm(e){
+  e.preventDefault();
+  document.getElementById('memForm').style.display='none';
+  document.getElementById('thanks').style.display='block';
+}
+</script>
+</body>
+</html>
