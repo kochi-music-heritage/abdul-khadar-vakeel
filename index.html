@@ -250,8 +250,16 @@ body::before {
 .legend-grid > :nth-child(7) { grid-column: 2; }
 .legend-card {
   background:var(--deep); padding:2.5rem 2rem; position:relative; overflow:hidden;
-  transition:background .4s;
+  transition:background .4s; display:flex; flex-direction:column;
 }
+.legend-card-img { padding:0; }
+.legend-card-img .l-img { width:100%; height:160px; object-fit:cover; object-position:top center; display:block; filter:grayscale(20%) sepia(15%); transition:filter .4s; flex-shrink:0; }
+.legend-card-img .l-num { margin-top:1.2rem; padding:0 2rem; }
+.legend-card-img .l-name,
+.legend-card-img .l-inst,
+.legend-card-img .l-note { padding:0 2rem; }
+.legend-card-img .l-note { padding-bottom:1.5rem; }
+.legend-card-img:hover .l-img { filter:grayscale(0%) sepia(0%); }
 .legend-card::after { content:''; position:absolute; bottom:0; left:0; width:0; height:1px; background:var(--gold); transition:width .5s; }
 .legend-card:hover { background:rgba(196,154,42,.06); }
 .legend-card:hover::after { width:100%; }
@@ -393,7 +401,8 @@ footer p span { color:var(--amber); opacity:.5; }
   .nav-links{display:none;}
   .section{padding:5rem 1.5rem;}
   .two-col{grid-template-columns:1fr;gap:2.5rem;}
-  .legend-grid{grid-template-columns:1fr;}
+  .legend-grid{grid-template-columns:repeat(2,1fr);}
+  .legend-grid > :nth-child(7){ grid-column:1; }
   .legends-top{grid-template-columns:1fr;gap:2rem;}
   .family-row{grid-template-columns:repeat(2,1fr);}
   .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
@@ -535,10 +544,9 @@ footer p span { color:var(--amber); opacity:.5; }
       <div class="legend-card legend-card-img"><img class="l-img" src="alla_rakha.jpg" alt="Ustad Alla Rakha"><div class="l-num">03</div><div class="l-name">Ustad Alla Rakha</div><div class="l-inst">Tabla</div><div class="l-note">Master of rhythm, honoured guest of the mehfil</div></div>
       <div class="legend-card legend-card-img"><img class="l-img" src="Begum_Akhtar.jpg" alt="Begum Akhtar"><div class="l-num">04</div><div class="l-name">Begum Akhtar</div><div class="l-inst">Ghazal · Thumri</div><div class="l-note">The Mallika-e-Ghazal herself performed in Kochi</div></div>
       <div class="legend-card legend-card-img"><img class="l-img" src="talat_mahmood.jpg" alt="Talat Mahmood"><div class="l-num">05</div><div class="l-name">Talat Mahmood</div><div class="l-inst">Vocalist</div><div class="l-note">The velvet voice of a golden era</div></div>
-      <div class="legend-card legend-card-img"><img class="l-img" src="umbayi.jpg" alt="Umbayi"><div class="l-num">06</div><div class="l-name">Umbayi</div><div class="l-inst">Ghazal · Kerala</div><div class="l-note">His musical direction shaped profoundly by Vakeel Sahib</div></div>
       <div class="legend-card legend-card-img">
         <img class="l-img" src="Parveen_Sultana.jpg" alt="Pandit Parveen Sultana">
-        <div class="l-num">07</div>
+        <div class="l-num">06</div>
         <div class="l-name">Pandit Parveen Sultana</div>
         <div class="l-inst">Khayal · Hindustani Vocal</div>
         <div class="l-note">The reigning queen of Khayal, graced Kochi at Vakeel Sahib's invitation</div>
