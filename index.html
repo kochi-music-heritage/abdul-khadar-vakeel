@@ -4,17 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ</title>
-
-<!-- FIX #5: OG / Social meta tags -->
-<meta property="og:title" content="Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ">
-<meta property="og:description" content="കൊച്ചിയുടെ നിശ്ശബ്ദ സംഗീത വിപ്ലവം · The Silent Musical Revolution of Kochi">
-<meta property="og:image" content="abdul_kadhar.png">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Abdul Khadar Vakeel · Memorial">
-<meta name="twitter:description" content="The Silent Musical Revolution of Kochi">
-<meta name="twitter:image" content="abdul_kadhar.png">
-
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+Malayalam:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -202,7 +191,7 @@ body::before {
   border-bottom: 1px solid rgba(196,154,42,0.1);
 }
 .nav-brand { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:500; color:var(--gold); letter-spacing:0.05em; }
-.nav-links { display:flex; gap:2rem; list-style:none; }
+.nav-links { display:flex; gap:2.5rem; list-style:none; }
 .nav-links a {
   color: rgba(240,230,208,0.4); text-decoration:none;
   font-size:0.7rem; letter-spacing:0.25em; text-transform:uppercase;
@@ -258,52 +247,30 @@ body::before {
 .legends-top p { font-size:.98rem; line-height:2; color:rgba(240,230,208,.5); }
 
 .legend-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(196,154,42,.08); }
-/* 7th card spans layout naturally — last row left-aligned */
 .legend-card {
   background:var(--deep); padding:2.5rem 2rem; position:relative; overflow:hidden;
-  transition:background .4s; text-decoration:none; display:block;
-  cursor: pointer;
+  transition:background .4s;
 }
-.legend-photo-wrap {
-  width: 100%; aspect-ratio: 1/1; background: var(--night); margin-bottom: 1.5rem; 
-  overflow: hidden; border: 1px solid rgba(232,184,75,0.1);
-}
-.legend-photo-wrap img { 
-  width: 100%; height: 100%; object-fit: cover; opacity: 0.8; filter: grayscale(100%); transition: 0.5s; 
-}
-.legend-card:hover .legend-photo-wrap img { opacity: 1; filter: grayscale(0%); }
-
 .legend-card::after { content:''; position:absolute; bottom:0; left:0; width:0; height:1px; background:var(--gold); transition:width .5s; }
-.legend-card:hover { background:rgba(196,154,42,0.06); }
+.legend-card:hover { background:rgba(196,154,42,.06); }
 .legend-card:hover::after { width:100%; }
-.l-wiki { margin-top:1.2rem; font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:var(--amber); opacity:0; transition:opacity .3s; }
-.legend-card:hover .l-wiki { opacity:.7; }
 .l-num { font-family:'Cormorant Garamond',serif; font-size:.72rem; color:var(--amber); letter-spacing:.2em; margin-bottom:1.2rem; opacity:.45; }
 .l-name { font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:500; color:var(--cream); line-height:1.2; margin-bottom:.5rem; }
 .l-inst { font-size:.76rem; color:var(--amber); letter-spacing:.1em; margin-bottom:.5rem; }
 .l-note { font-size:.74rem; font-style:italic; color:rgba(240,230,208,.28); line-height:1.5; }
 
-/* CINEMA SECTION */
-.cinema-list { list-style: none; margin-top: 3rem; }
-.cinema-item { 
-  display: flex; flex-direction: column; gap: 0.5rem; padding: 2.5rem 0;
-  border-bottom: 1px solid rgba(196,154,42,0.15);
-}
-.cinema-item:last-child { border-bottom: none; }
-.c-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--gold); }
-.c-title-ml { font-family: 'Noto Serif Malayalam', serif; font-size: 1.3rem; margin-left: 0.8rem; opacity: 0.7; }
-.c-desc { font-family: 'Noto Serif Malayalam', serif; line-height: 1.8; color: rgba(240,230,208,0.6); font-size: 1rem; }
-
 /* FAMILY */
 .family-row { display:grid; grid-template-columns:repeat(5,1fr); gap:2px; background:rgba(196,154,42,.07); margin-top:4rem; }
-.fam-card { background:var(--bark); padding:2.5rem 1.2rem 2rem; text-align:center; transition:background .3s; display: flex; flex-direction: column; }
+.fam-card { background:var(--bark); padding:2.5rem 1.2rem 2rem; text-align:center; transition:background .3s; }
 .fam-card:hover { background:rgba(196,154,42,.07); }
 .fam-initial { font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:300; color:var(--amber); opacity:.35; margin-bottom:1.2rem; line-height:1; }
 .fam-name { font-family:'Noto Serif Malayalam',serif; font-size:.9rem; font-weight:500; color:var(--cream); margin-bottom:.4rem; }
-.fam-role { font-size:.67rem; letter-spacing:.12em; text-transform:uppercase; color:var(--amber); opacity:.55; margin-top: auto; }
+.fam-role { font-size:.67rem; letter-spacing:.12em; text-transform:uppercase; color:var(--amber); opacity:.55; }
 .fam-photo { padding:0 0 1.5rem; overflow:hidden; }
 .fam-photo img { width:100%; aspect-ratio:1/1; object-fit:cover; object-position:top; display:block; margin-bottom:1.2rem; filter:grayscale(20%) sepia(15%); transition:filter .4s; }
 .fam-photo:hover img { filter:grayscale(0%) sepia(0%); }
+.fam-photo .fam-name { padding:0 1.2rem; }
+.fam-photo .fam-role { padding:0 1.2rem; }
 
 /* GALLERY */
 .gallery-band { background:var(--bark); padding:8rem 0; }
@@ -321,21 +288,64 @@ body::before {
 .gcell:hover { background:rgba(196,154,42,.07); }
 .gcell svg { opacity:.18; }
 .gcell-label { font-size:.63rem; letter-spacing:.28em; text-transform:uppercase; color:rgba(240,230,208,.2); }
-/* FIX: placeholder cells — add a "coming soon" sub-label */
-.gcell-soon { font-size:.58rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(196,154,42,.25); margin-top:-.4rem; font-style:italic; }
 .gcell-photo { padding:0; position:relative; overflow:hidden; border:none; }
 .gcell-photo img { width:100%; height:100%; object-fit:cover; object-position:top center; display:block; filter:sepia(20%) grayscale(10%); transition:filter .5s, transform .5s; }
 .gcell-photo:hover img { filter:sepia(0%) grayscale(0%); transform:scale(1.03); }
 .gcell-caption { position:absolute; bottom:0; left:0; right:0; padding:1.5rem 1.2rem .9rem; background:linear-gradient(to top, rgba(10,8,4,.85), transparent); font-family:'Cormorant Garamond',serif; font-size:.85rem; font-style:italic; color:var(--gold-pale); letter-spacing:.04em; }
 .gallery-cta { display:inline-block; margin-top:4rem; font-size:.63rem; letter-spacing:.28em; text-transform:uppercase; color:var(--amber); border:1px solid rgba(196,154,42,.3); padding:.45rem .95rem; }
 
-/* MEMORIES / FORUM */
-.memory-wrap { max-width:800px; margin:0 auto; padding:8rem 3rem; text-align:center; }
-.forum-container {
-  margin-top: 4rem; text-align: left;
-  background: rgba(17,14,7,0.5);
-  padding: 2.5rem; border: 1px solid rgba(196,154,42,0.1);
+.legend-card--photo { display:grid; grid-template-rows:80px auto auto auto auto; }
+.l-photo-holder { width:100%; height:80px; background:rgba(196,154,42,.04); border:1px dashed rgba(196,154,42,.12); display:flex; align-items:center; justify-content:center; margin-bottom:.8rem; }
+
+/* JAMAL SECTION */
+.jamal-wrap { max-width:900px; margin:0 auto; padding:0 3rem 8rem; }
+.jamal-inner { display:grid; grid-template-columns:1fr 2fr; gap:5rem; align-items:start; margin-top:4rem; }
+.jamal-photo-holder {
+  width:100%; aspect-ratio:3/4; background:rgba(196,154,42,.03);
+  border:1px dashed rgba(196,154,42,.15);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:1rem; position:sticky; top:8rem;
 }
+.jamal-photo-holder svg { opacity:.18; }
+.jamal-photo-label { font-size:.6rem; letter-spacing:.28em; text-transform:uppercase; color:rgba(240,230,208,.2); }
+
+@media(max-width:768px){
+  .jamal-inner { grid-template-columns:1fr; gap:2.5rem; }
+  .jamal-photo-holder { aspect-ratio:4/3; position:static; }
+  .jamal-wrap { padding:0 1.5rem 5rem; }
+}
+.memory-wrap { max-width:660px; margin:0 auto; padding:8rem 3rem; text-align:center; }
+.form { margin-top:4rem; text-align:left; }
+.field { position:relative; margin-bottom:2.2rem; }
+.field input, .field textarea {
+  width:100%; background:transparent; border:none; border-bottom:1px solid rgba(196,154,42,.18);
+  color:var(--cream); font-family:'Noto Serif Malayalam','EB Garamond',serif; font-size:1rem;
+  padding:1rem 0; outline:none; transition:border-color .3s; resize:none;
+}
+.field input:focus, .field textarea:focus { border-bottom-color:var(--gold); }
+.field input::placeholder, .field textarea::placeholder { color:rgba(240,230,208,.18); font-style:italic; }
+.field label {
+  position:absolute; top:1rem; left:0;
+  font-size:.7rem; letter-spacing:.25em; text-transform:uppercase;
+  color:rgba(196,154,42,.45); pointer-events:none; transition:all .3s;
+}
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label,
+.field textarea:focus + label,
+.field textarea:not(:placeholder-shown) + label { top:-.8rem; font-size:.58rem; color:var(--amber); }
+
+.btn-submit {
+  background:transparent; border:1px solid rgba(196,154,42,.4);
+  color:var(--gold-pale); padding:1rem 3rem;
+  font-family:'EB Garamond',serif; font-size:.85rem; letter-spacing:.3em; text-transform:uppercase;
+  cursor:pointer; position:relative; overflow:hidden; transition:all .4s;
+}
+.btn-submit::before {
+  content:''; position:absolute; inset:0; background:var(--gold);
+  transform:translateX(-100%); transition:transform .4s; z-index:-1;
+}
+.btn-submit:hover { color:var(--night); border-color:var(--gold); }
+.btn-submit:hover::before { transform:translateX(0); }
 
 /* ORNAMENT */
 .ornament { display:flex; align-items:center; gap:2rem; padding:0 3rem; max-width:900px; margin:0 auto; opacity:.2; }
@@ -344,7 +354,7 @@ body::before {
 
 /* FOOTER */
 footer { padding:4rem 3rem; text-align:center; border-top:1px solid rgba(196,154,42,.06); }
-footer p { font-family:'Cormorant Garamond',serif; font-size:1rem; color:rgba(240,230,208,0.18); letter-spacing:.2em; }
+footer p { font-family:'Cormorant Garamond',serif; font-size:1rem; color:rgba(240,230,208,.18); letter-spacing:.2em; }
 footer p span { color:var(--amber); opacity:.5; }
 
 /* REVEAL */
@@ -353,29 +363,18 @@ footer p span { color:var(--amber); opacity:.5; }
 .delay1 { transition-delay:.15s; }
 .delay2 { transition-delay:.3s; }
 
-/* MOBILE HAMBURGER */
-.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; z-index: 600; }
-.nav-hamburger span { display: block; width: 24px; height: 1px; background: var(--gold); transition: all 0.3s ease; }
-.nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-.nav-hamburger.open span:nth-child(2) { opacity: 0; }
-.nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-
-.mobile-menu { display: none; position: fixed; inset: 0; background: rgba(10,8,4,0.97); z-index: 550; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
-.mobile-menu.open { display: flex; }
-.mobile-menu a { color: rgba(240,230,208,0.7); text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; letter-spacing: 0.1em; }
-
 @media(max-width:768px){
-  .cursor, .cursor-ring { display: none; }
-  body { cursor: auto; }
-  .nav { padding: 1rem 1.5rem; }
-  .nav-links { display: none; }
-  .nav-hamburger { display: flex; }
-  .section { padding: 4.5rem 1.5rem; }
-  .two-col { grid-template-columns: 1fr; gap: 2rem; }
-  .legend-grid { grid-template-columns: 1fr; }
-  .family-row { grid-template-columns: repeat(2, 1fr); }
-  .gallery-grid { grid-template-columns: 1fr; grid-template-rows: 280px repeat(4, 180px); }
-  .gallery-grid > :first-child { grid-row: span 1; }
+  .nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  .section{padding:5rem 1.5rem;}
+  .two-col{grid-template-columns:1fr;gap:2.5rem;}
+  .legend-grid{grid-template-columns:1fr;}
+  .legends-top{grid-template-columns:1fr;gap:2rem;}
+  .family-row{grid-template-columns:repeat(2,1fr);}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+  .gallery-grid>:first-child{grid-row:span 1;}
+  .legends-inner,.gallery-inner{padding:0 1.5rem;}
+  .memory-wrap{padding:5rem 1.5rem;}
 }
 </style>
 </head>
@@ -384,8 +383,8 @@ footer p span { color:var(--amber); opacity:.5; }
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- FIX #3: Added id="home" to hero section -->
-<section class="hero" id="home">
+<!-- HERO -->
+<section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-portrait" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
     <img src="abdul_kadhar.png" alt="" style="height:90%;max-height:700px;object-fit:contain;object-position:top;opacity:0.07;filter:sepia(40%) blur(1px);mask-image:radial-gradient(ellipse 60% 80% at 50% 40%,black 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 60% 80% at 50% 40%,black 30%,transparent 75%);">
@@ -418,25 +417,11 @@ footer p span { color:var(--amber); opacity:.5; }
   <ul class="nav-links">
     <li><a href="#story">Story</a></li>
     <li><a href="#legends">Legends</a></li>
-    <li><a href="#cinema">Cinema</a></li>
     <li><a href="#family">Family</a></li>
     <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#memories">Forum</a></li>
+    <li><a href="#memories">Memories</a></li>
   </ul>
-  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
-
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#story" class="mm-link">Story</a>
-  <a href="#legends" class="mm-link">Legends</a>
-  <a href="#cinema" class="mm-link">Cinema</a>
-  <a href="#family" class="mm-link">Family</a>
-  <a href="#gallery" class="mm-link">Gallery</a>
-  <a href="#memories" class="mm-link">Forum</a>
-</div>
 
 <!-- STORY -->
 <div id="story">
@@ -447,34 +432,51 @@ footer p span { color:var(--amber); opacity:.5; }
   </div>
   <div class="two-col reveal delay1">
     <div>
-      <p class="body ml">അന്ന് കൊച്ചിക്ക് മറ്റൊരു താളമായിരുന്നു. റേഡിയോകളിൽ മുഴങ്ങുന്ന ചലച്ചിത്ര ഗാനങ്ങളും മാപ്പിളപ്പാട്ടുകളുമായിരുന്നു കൊച്ചിയുടെ സംഗീത ലോകം. എന്നാൽ ഈ പരിചിത ഈണങ്ങൾക്കിടയിലേക്ക്, തബലയുടെയും സാരംഗിയുടെയും അകമ്പടിയോടെ ഹിന്ദുസ്ഥാനി സംഗീതത്തിന്റെ ഗാംഭീര്യം വക്കീൽ കൊണ്ടുവന്നു.</p>
+      <p class="body ml">അന്ന് കൊച്ചിക്ക് മറ്റൊരു താളമായിരുന്നു. റേഡിയോകളിൽ മുഴങ്ങുന്ന ചലച്ചിത്ര ഗാനങ്ങളും മാപ്പിളപ്പാട്ടുകളുമായിരുന്നു കൊച്ചിയുടെ സംഗീത ലോകം. എന്നാൽ ഈ പരിചിത ഈണങ്ങൾക്കിടയിലേക്ക്, തബലയുടെയും സാരംഗിയുടെയും അകമ്പടിയോടെ ഹിന്ദുസ്ഥാനി സംഗീതത്തിന്റെ ഗാംഭീര്യം അബ്ദുൾ ഖാദർ വക്കീൽ കൊണ്ടുവന്നു.</p>
       <p class="body ml">അതൊരു നിശ്ശബ്ദ വിപ്ലവത്തിന്റെ തുടക്കമായിരുന്നു. മട്ടാഞ്ചേരിയിലെയും ഫോർട്ട് കൊച്ചിയിലെയും സാധാരണക്കാർക്ക് പോലും ഇതിഹാസങ്ങളുടെ സംഗീതം അപ്രാപ്യമല്ലെന്ന് അദ്ദേഹം തെളിയിച്ചു.</p>
     </div>
     <div>
       <p class="body ml">സിനിമ പാട്ടുകൾക്കും മാപ്പിളപ്പാട്ടുകൾക്കുമപ്പുറം, ആത്മാവിനെ സ്പർശിക്കുന്ന ഗസലുകളുടെയും ശാസ്ത്രീയ സംഗീതത്തിന്റെയും പുതിയൊരു ലോകം അദ്ദേഹം കൊച്ചിക്ക് പരിചയപ്പെടുത്തി.</p>
-      <p class="body ml">ഗസൽ ഗായകൻ ഉമ്പായിയുടെ സംഗീത ജീവിതത്തിന് കൃത്യമായ ദിശാബോധം നൽകിയതും വക്കീലുമായുള്ള ആ ബന്ധമായിരുന്നു. കൊച്ചിയുടെ ഗസൽ പാരമ്പര്യം ഇന്നും നിലനിൽക്കുന്നത് അദ്ദേഹം പകർന്നു നൽകിയ ആ ആവേശത്തിലൂടെയാണ്.</p>
+      <p class="body ml">ഗസൽ ഗായകൻ ഉമ്പായിയുടെ സംഗീത ജീവിതത്തിന് കൃത്യമായ ദിശാബോധം നൽകിയതും വക്കീൽ സാഹിബുമായുള്ള ആ ബന്ധമായിരുന്നു. കൊച്ചിയുടെ ഗസൽ പാരമ്പര്യം ഇന്നും നിലനിൽക്കുന്നത് അദ്ദേഹം പകർന്നു നൽകിയ ആ ആവേശത്തിലൂടെയാണ്.</p>
     </div>
   </div>
 
   <div class="blockquote reveal">
-    <p class="ml">"കൊച്ചിയിലെ കായൽക്കാറ്റിന് ഹിന്ദുസ്ഥാനി സംഗീതത്തിന്റെ താളം നൽകിയത് വക്കീലിന്റെ ആ വിപ്ലവകരമായ പരിശ്രമമായിരുന്നു..."</p>
+    <p class="ml">"കൊച്ചിയിലെ കായൽക്കാറ്റിന് ഹിന്ദുസ്ഥാനി സംഗീതത്തിന്റെ താളം നൽകിയത് അബ്ദുൽ ഖാദർ വക്കീലിന്റെ ആ വിപ്ലവകരമായ പരിശ്രമമായിരുന്നു..."</p>
   </div>
 
   <div class="two-col reveal">
     <div>
       <div class="eyebrow">The Mehfils · സംഗീത സദസ്സ്</div>
       <h3 class="heading" style="font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:1.5rem;">An Open<br><em>Courtyard</em></h3>
-      <p class="body ml">കൊച്ചിക്കാർ സ്നേഹത്തോടെ 'ഭായ്' എന്ന് വിളിച്ചിരുന്ന എം.എച്ച്. മെഹബൂബ് വക്കീലിന്റെ കൂടെ പലപ്പോഴും ഉണ്ടായിരുന്നു. അദ്ദേഹം ഒരുക്കിയ സംഗീത സദസ്സുകളിലെല്ലാം മെഹബൂബ് ഭായിയുടെ സാന്നിധ്യമുണ്ടായിരുന്നു. വലിയവരെന്നോ ചെറിയവരെന്നോ ഭേദമില്ലാതെ എല്ലാവർക്കും അവിടെ സ്വാഗതമായിരുന്നു.</p>
+      <p class="body ml">കൊച്ചിക്കാർ സ്നേഹത്തോടെ 'ഭായ്' എന്ന് വിളിച്ചിരുന്ന എം.എച്ച്. മെഹബൂബ് വക്കീൽ സാഹിബിന്റെ കൂടെ പലപ്പോഴും ഉണ്ടായിരുന്നു. അദ്ദേഹം ഒരുക്കിയ സംഗീത സദസ്സുകളിലെല്ലാം മെഹബൂബ് ഭായിയുടെ സാന്നിധ്യം ഉണ്ടായിരുന്നു.</p>
     </div>
     <div style="padding-top:3.5rem;">
-      <p class="body ml">അദ്ദേഹത്തിന്റെ നടുമുറ്റത്തെ ആ സംഗീത സദസ്സുകൾ ഉമ്പായിയെപ്പോലെയുള്ള പല കലാകാരന്മാരെയും ഗസലുകളുടെ ആഴങ്ങളിലേക്ക് ആഴ്ന്നിറങ്ങാൻ പ്രേരിപ്പിച്ചു. വക്കീലിന്റെ മെഹ്ഫിലുകളിൽ ഉച്ചനീചത്വങ്ങളോ അതിർവരമ്പുകളോ ഉണ്ടായിരുന്നില്ല; സംഗീതത്തിന് മുന്നിൽ എല്ലാവരും തുല്യരായിരുന്നു.</p>
-      <p class="body" style="font-size:0.9rem; margin-top:1rem; font-style:italic; opacity:0.6;">Vakeel's mehfils knew no boundaries; they were spaces where the distinctions between the big and small vanished in the shared love for music.</p>
+      <p class="body ml">അദ്ദേഹത്തിന്റെ നടുമുറ്റത്തെ ആ സംഗീത സദസ്സുകൾ ഉമ്പായിയെപ്പോലെയുള്ള പല കലാകാരന്മാരെയും ഗസലുകളുടെ ആഴങ്ങളിലേക്ക് ആഴ്ന്നിറങ്ങാൻ പ്രേരിപ്പിച്ചു. ആ നടുമുറ്റം ഒരു ലോകം തന്നെ ആയിരുന്നു.</p>
     </div>
   </div>
 </div>
 </div>
 
-<!-- LEGENDS -->
+<!-- JAMAL KOCHANGADI -->
+<div id="story">
+<div class="jamal-wrap">
+  <div class="reveal">
+    <div class="eyebrow">Creative Partnership · സർഗ്ഗസഹചാരി</div>
+    <h2 class="heading heading-ml">ജമാൽ <em>കൊച്ചങ്ങാടി</em></h2>
+  </div>
+  <div class="jamal-inner reveal delay1">
+    <div class="jamal-photo-holder">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+      <span class="jamal-photo-label">Jamal Kochangadi</span>
+    </div>
+    <div>
+      <p class="body ml">വക്കീലിന്റെ നിശ്ശബ്ദ സ്വപ്നങ്ങൾക്ക് അക്ഷരങ്ങളിലൂടെ ശബ്ദം നൽകിയ വ്യക്തിയാണ് ജമാൽ കൊച്ചങ്ങാടി. വക്കീലിന്റെ സിനിമകളുടെ പിന്നിലെ പ്രധാന സർഗ്ഗശക്തിയായിരുന്നു അദ്ദേഹം.</p>
+      <p class="body ml">വക്കീലിന്റെ സിനിമാ യാത്രകളെയും കൊച്ചിയുടെ സംഗീത ആത്മാവിനെയും തന്റെ കഥകളിലൂടെയും ഗാനങ്ങളിലൂടെയും അദ്ദേഹം അനശ്വരമാക്കി. വക്കീലിന്റെ ഹൃദയമിടിപ്പുകൾ തിരിച്ചറിഞ്ഞ എഴുത്തുകാരൻ കൂടിയായിരുന്നു അദ്ദേഹം.</p>
+    </div>
+  </div>
+</div>
+</div>
 <div class="legends-band" id="legends">
   <div class="legends-inner">
     <div class="legends-top reveal">
@@ -482,73 +484,26 @@ footer p span { color:var(--amber); opacity:.5; }
         <div class="eyebrow">Musical Legends · ഇതിഹാസങ്ങൾ</div>
         <h2 class="heading">Who Came<br>to <em>Kochi</em></h2>
       </div>
-      <p>These maestros accepted Vakeel's personal invitation and graced Kochi with their presence. Their music echoed through the courtyards of Mattancherry.</p>
+      <p>These maestros accepted Vakeel Sahib's personal invitation and graced Kochi with their presence — many for the very first time. Their music echoed through the hearts of Mattancherry.</p>
+      <p class="body ml" style="margin-top:1.2rem;">ഈ മഹാരഥന്മാർ വക്കീൽ സാഹിബിന്റെ വ്യക്തിഗത ക്ഷണം സ്വീകരിച്ച് കൊച്ചിയിലേക്ക് എത്തിയവരാണ് — പലരും ആദ്യമായി. അവരുടെ സംഗീതം മട്ടാഞ്ചേരിയുടെ ഹൃദയങ്ങളിൽ അലയടിച്ചു.</p>
     </div>
     <div class="legend-grid reveal delay1">
-      <a class="legend-card" href="https://en.wikipedia.org/wiki/Ravi_Shankar" target="_blank" rel="noopener">
-        <!-- FIX #6: placehold.co instead of via.placeholder.com -->
-        <div class="legend-photo-wrap"><img src="ravi_shankar.jpg" onerror="this.src='https://placehold.co/400x400/1c1508/e8b84b?text=Pandit+Ravi+Shankar'" alt="Ravi Shankar"></div>
-        <div class="l-num">01</div><div class="l-name">Pandit Ravi Shankar</div><div class="l-inst">Sitar</div><div class="l-note">First visit to Kochi — brought at Vakeel's personal invitation</div><div class="l-wiki">Wikipedia ↗</div>
-      </a>
-      <a class="legend-card" href="https://en.wikipedia.org/wiki/Bismillah_Khan" target="_blank" rel="noopener">
-        <div class="legend-photo-wrap"><img src="bismillah_khan.jpg" onerror="this.src='https://placehold.co/400x400/1c1508/e8b84b?text=Ustad+Bismillah+Khan'" alt="Bismillah Khan"></div>
-        <div class="l-num">02</div><div class="l-name">Ustad Bismillah Khan</div><div class="l-inst">Shehnai</div><div class="l-note">The legendary voice of the shehnai graced these shores</div><div class="l-wiki">Wikipedia ↗</div>
-      </a>
-      <a class="legend-card" href="https://en.wikipedia.org/wiki/Alla_Rakha" target="_blank" rel="noopener">
-        <div class="legend-photo-wrap"><img src="alla_rakha.jpg" onerror="this.src='https://placehold.co/400x400/1c1508/e8b84b?text=Ustad+Alla+Rakha'" alt="Alla Rakha"></div>
-        <div class="l-num">03</div><div class="l-name">Ustad Alla Rakha</div><div class="l-inst">Tabla</div><div class="l-note">Master of rhythm, honoured guest of the mehfil</div><div class="l-wiki">Wikipedia ↗</div>
-      </a>
-      <a class="legend-card" href="https://en.wikipedia.org/wiki/Begum_Akhtar" target="_blank" rel="noopener">
-        <div class="legend-photo-wrap"><img src="Begum_Akhtar.jpg" onerror="this.src='https://placehold.co/400x400/1c1508/e8b84b?text=Begum+Akhtar'" alt="Begum Akhtar"></div>
-        <div class="l-num">04</div><div class="l-name">Begum Akhtar</div><div class="l-inst">Ghazal · Thumri</div><div class="l-note">The Mallika-e-Ghazal herself performed in Kochi</div><div class="l-wiki">Wikipedia ↗</div>
-      </a>
-      <a class="legend-card" href="https://en.wikipedia.org/wiki/Talat_Mahmood" target="_blank" rel="noopener">
-        <div class="legend-photo-wrap"><img src="talat_mahmood.jpg" onerror="this.src='https://placehold.co/400x400/1c1508/e8b84b?text=Talat+Mahmood'" alt="Talat Mahmood"></div>
-        <div class="l-num">05</div><div class="l-name">Talat Mahmood</div><div class="l-inst">Vocalist</div><div class="l-note">The velvet voice of a golden era</div><div class="l-wiki">Wikipedia ↗</div>
-      </a>
-      <a class="legend-card" href="https://en.wikipedia.org/wiki/Umbayi" target="_blank" rel="noopener">
-        <div class="legend-photo-wrap"><img src="umbayi.jpg" onerror="this.src='https://placehold.co/400x400/1c1508/e8b84b?text=Umbayi'" alt="Umbayi"></div>
-        <div class="l-num">06</div><div class="l-name">Umbayi</div><div class="l-inst">Ghazal · Kerala</div><div class="l-note">His musical direction shaped profoundly by Vakeel</div><div class="l-wiki">Wikipedia ↗</div>
-      </a>
-      <div class="legend-card" style="cursor:default;">
-        <div class="legend-photo-wrap"><img src="mehboob_bhai.jpg" onerror="this.src='https://placehold.co/400x400/1c1508/e8b84b?text=M.H.+Mehboob'" alt="M.H. Mehboob Bhai"></div>
+      <div class="legend-card"><div class="l-num">01</div><div class="l-name">Pandit Ravi Shankar</div><div class="l-inst">Sitar</div><div class="l-note">First visit to Kochi — brought at Vakeel Sahib's personal invitation</div></div>
+      <div class="legend-card"><div class="l-num">02</div><div class="l-name">Ustad Bismillah Khan</div><div class="l-inst">Shehnai</div><div class="l-note">The legendary voice of the shehnai graced these shores</div></div>
+      <div class="legend-card"><div class="l-num">03</div><div class="l-name">Ustad Alla Rakha</div><div class="l-inst">Tabla</div><div class="l-note">Master of rhythm, honoured guest of the mehfil</div></div>
+      <div class="legend-card"><div class="l-num">04</div><div class="l-name">Begum Akhtar</div><div class="l-inst">Ghazal · Thumri</div><div class="l-note">The Mallika-e-Ghazal herself performed in Kochi</div></div>
+      <div class="legend-card"><div class="l-num">05</div><div class="l-name">Talat Mahmood</div><div class="l-inst">Vocalist</div><div class="l-note">The velvet voice of a golden era</div></div>
+      <div class="legend-card"><div class="l-num">06</div><div class="l-name">Umbayi</div><div class="l-inst">Ghazal · Kerala</div><div class="l-note">His musical direction shaped profoundly by Vakeel Sahib</div></div>
+      <div class="legend-card legend-card--photo">
+        <div class="l-photo-holder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.2"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
         <div class="l-num">07</div>
-        <div class="l-name">M.H. Mehboob <span style="font-family:'Noto Serif Malayalam',serif;font-size:1rem;opacity:0.7;">(ഭായ്)</span></div>
-        <div class="l-inst">Companion · Kochi</div>
-        <div class="l-note">Vakeel's inseparable companion — present at every mehfil, a constant presence in Kochi's musical life</div>
+        <div class="l-name">Pandit Parveen Sultana</div>
+        <div class="l-inst">Khayal · Hindustani Vocal</div>
+        <div class="l-note">The reigning queen of Khayal, graced Kochi at Vakeel Sahib's invitation</div>
       </div>
     </div>
+    <p class="body ml reveal" style="margin-top:3rem;opacity:.55;font-size:.95rem;font-style:italic;">ഇവർ മാത്രമല്ല — വക്കീൽ സാഹിബിന്റെ ക്ഷണം ഏറ്റുവാങ്ങി കൊച്ചിയിലെത്തിയ ഇതിഹാസങ്ങൾ ഇനിയും ഏറെയുണ്ട്.</p>
   </div>
-</div>
-
-<!-- CINEMA -->
-<div id="cinema">
-<div class="section">
-  <div class="reveal">
-    <div class="eyebrow">Cinematic Legacy · ചലച്ചിത്ര ചരിത്രം</div>
-    <h2 class="heading heading-ml">വെള്ളിത്തിരയിലെ<br><em>സ്വാധീനം</em></h2>
-    <p class="body ml" style="max-width:600px;">വക്കീലിന്റെ ഇതിവൃത്തത്തിലും നിർമ്മാണ പങ്കാളിത്തത്തിലും പിറന്ന ചിത്രങ്ങൾ മലയാള സിനിമയിലെ വലിയ ചരിത്ര നിമിഷങ്ങളാണ്.</p>
-  </div>
-  
-  <div class="cinema-list reveal delay1">
-    <div class="cinema-item">
-      <div class="c-title">Thaliritta Kinakkal <span class="c-title-ml">തളിരിട്ട കിനാക്കൾ (1966)</span></div>
-      <p class="c-desc">ഇതിഹാസ ഗായകൻ മുഹമ്മദ് റാഫി മലയാളത്തിൽ ആദ്യമായി പിന്നണി പാടിയത് വക്കീൽ നിർമ്മാണ പങ്കാളിയായ ഈ ചിത്രത്തിലാണ്. റാഫിയുമായുള്ള വക്കീലിന്റെ ആഴത്തിലുള്ള സൗഹൃദമായിരുന്നു ഈ അപൂർവ്വ നിമിഷത്തിന് പിന്നിൽ.</p>
-    </div>
-    <div class="cinema-item">
-      <div class="c-title">Charam <span class="c-title-ml">ചാരം</span></div>
-      <p class="c-desc">പി.എ. ബക്കർ സംവിധാനം ചെയ്ത ഈ ചിത്രത്തിന്റെ ഇതിവൃത്തം (Story) വക്കീലിന്റേതായിരുന്നു. മുംബൈയിലെ റെഡ് ലൈറ്റ് ഏരിയയിൽ തന്റെ മകളെ തിരഞ്ഞു പോകുന്ന ഒരു പിതാവിന്റെ വേദനാനിർഭരമായ കഥയാണിത്.</p>
-    </div>
-    <div class="cinema-item">
-      <div class="c-title">Chappa <span class="c-title-ml">ചാപ്പ</span></div>
-      <p class="c-desc">വക്കീലിന്റെ ഇതിവൃത്തത്തിൽ പിറന്ന പി.എ. ബക്കറിന്റെ മറ്റൊരു ശ്രദ്ധേയമായ ചിത്രം. കൊച്ചിയുടെയും മട്ടാഞ്ചേരിയുടെയും യഥാർത്ഥ ജീവിതം ഈ ചിത്രം വരച്ചുകാട്ടുന്നു.</p>
-    </div>
-    <div class="cinema-item">
-      <div class="c-title">Marakkillorikkalum <span class="c-title-ml">മറക്കില്ലൊരിക്കലും</span></div>
-      <p class="c-desc">ഫാസിൽ സംവിധാനം ചെയ്ത ഈ സിനിമയുടെ ചിത്രീകരണ വേളയിലാണ് വക്കീൽ അന്തരിക്കുന്നത്. ആ മരണം ഒരു അകാല മൃത്യു പോലെ സിനിമയെയും സംഗീത ലോകത്തെയും വേദനിപ്പിച്ചു.</p>
-    </div>
-  </div>
-</div>
 </div>
 
 <!-- FAMILY -->
@@ -556,25 +511,15 @@ footer p span { color:var(--amber); opacity:.5; }
 <div class="section">
   <div class="reveal">
     <div class="eyebrow">The Family · കുടുംബം</div>
-    <h2 class="heading heading-ml">ഫാത്തിമ – <em>വക്കീൽ</em><br>ദമ്പതികൾ</h2>
-    <!-- FIX #2: Replaced **markdown bold** with <strong> HTML tags -->
-    <div class="body ml" style="max-width:650px; margin-bottom: 2rem;">
-      <p>ആ വലിയ സംഗീത പാരമ്പര്യം ഇന്നും കൊച്ചിയിൽ നിലനിൽക്കുന്നത് ഈ കുടുംബത്തിലൂടെയാണ്. മക്കളിൽ <strong>ഷൗക്കത്ത് അലി, ഷബീബ, ഷബാന</strong> എന്നിവർ മികച്ച ഗായകരാണ്. പിതാവിനെപ്പോലെ തബല വാദനത്തിൽ അതീവ താല്പര്യമുള്ള വ്യക്തിയാണ് <strong>ഷൗക്കത്ത് അലി</strong>.</p>
-      <p style="margin-top:1rem; opacity:0.8; font-size:0.95rem;">കാഴ്ചശക്തിയുമായി ബന്ധപ്പെട്ട വെല്ലുവിളികൾ ഷൗക്കത്ത് അലിക്കും സഹോദരി വാഹിദയ്ക്കുമുണ്ടെങ്കിലും ആവേശം ഒട്ടും ചോരാതെ അവർ മുന്നോട്ട് പോകുന്നു.</p>
-    </div>
+    <h2 class="heading heading-ml">ഫാത്തിമ – <em>അബ്ദുൾ ഖാദർ</em><br>ദമ്പതികൾ</h2>
+    <p class="body ml" style="max-width:540px;">ഫാത്തിമ–വക്കീൽ ദമ്പതികളുടെ സംഗീത പാരമ്പര്യം ഇന്നും നിലനിൽക്കുന്നു. മക്കളായ ഷൗക്കത്ത് അലി, ഷബീബ, ഷബാന, മൻസൂർ, വാഹിദ എന്നിവർ മികച്ച ഗായകരാണ്. പിതാവിനെപ്പോലെ തബലയിൽ വൈദഗ്ധ്യം തെളിയിച്ച ഷൗക്കത്ത് അലി ആ സംഗീത പാരമ്പര്യത്തിന്റെ തുടർച്ചയാണ്. കാഴ്ചശക്തിയുമായി ബന്ധപ്പെട്ട വെല്ലുവിളികൾ ഷൗക്കത്ത് അലിക്കും സഹോദരി വാഹിദയ്ക്കുമുണ്ടെങ്കിലും സംഗീതത്തോടുള്ള അഭിനിവേശമാണ് അവരെ മുന്നോട്ട് നയിക്കുന്നത്. മരുമക്കളായ വാഹിദ്, റിസ എന്നിവരും ഈ കുടുംബത്തിന്റെ ഭാഗമാണ്.</p>
   </div>
   <div class="family-row reveal delay1">
-    <!-- FIX #6: placehold.co for family image fallbacks -->
-    <div class="fam-card fam-photo"><img src="Shoukath.jpg" onerror="this.src='https://placehold.co/300x400/1c1508/e8b84b?text=Shoukath'" alt="ഷൗക്കത്ത് അലി"><div class="fam-name">ഷൗക്കത്ത് അലി</div><div class="fam-role">Tabla & Vocal</div></div>
-    <div class="fam-card fam-photo"><img src="Shabeeba.jpg" onerror="this.src='https://placehold.co/300x400/1c1508/e8b84b?text=Shabeeba'" alt="ഷബീബ"><div class="fam-name">ഷബീബ</div><div class="fam-role">Vocalist</div></div>
-    <div class="fam-card"><div class="fam-initial">ഷ</div><div class="fam-name">ഷബാന</div><div class="fam-role">Vocalist</div></div>
-    <div class="fam-card"><div class="fam-initial">മ</div><div class="fam-name">മൻസൂർ</div><div class="fam-role">High Court</div></div>
-    <div class="fam-card"><div class="fam-initial">വ</div><div class="fam-name">വാഹിദ</div><div class="fam-role">Family</div></div>
-  </div>
-  <!-- FIX #8: Clarified sons-in-law labels to avoid duplication -->
-  <div class="reveal delay2" style="margin-top: 2rem; border-top: 1px solid rgba(196,154,42,0.1); padding-top: 1.5rem; display: flex; gap: 3rem;">
-     <div><span class="eyebrow" style="margin:0; font-size:0.55rem;">Son-in-law (ഷബാനയുടെ)</span><div class="fam-name" style="margin-top:0.5rem;">വാഹിദ് (Vahid)</div></div>
-     <div><span class="eyebrow" style="margin:0; font-size:0.55rem;">Son-in-law (ഷബീബയുടെ)</span><div class="fam-name" style="margin-top:0.5rem;">റിസ (Riza)</div></div>
+    <div class="fam-card fam-photo"><img src="Shoukath.jpg" alt="ഷൗക്കത്ത് അലി"><div class="fam-name">ഷൗക്കത്ത് അലി</div><div class="fam-role">Tabla</div></div>
+    <div class="fam-card fam-photo"><img src="Shabeeba.jpg" alt="ഷബീബ"><div class="fam-name">ഷബീബ</div><div class="fam-role">Vocalist</div></div>
+    <div class="fam-card fam-photo"><img src="Shabana.jpg" alt="ഷബാന"><div class="fam-name">ഷബാന</div><div class="fam-role">Vocalist</div></div>
+    <div class="fam-card fam-photo"><img src="Mansoor.jpg" alt="മൻസൂർ"><div class="fam-name">മൻസൂർ</div><div class="fam-role">High Court</div></div>
+    <div class="fam-card fam-photo"><img src="Wahida.jpg" alt="വാഹിദ"><div class="fam-name">വാഹിദ</div><div class="fam-role">Family</div></div>
   </div>
 </div>
 </div>
@@ -585,99 +530,38 @@ footer p span { color:var(--amber); opacity:.5; }
     <div class="reveal">
       <div class="eyebrow">Gallery · ചിത്രശേഖരം</div>
       <h2 class="heading">Rare <em>Moments</em></h2>
-      <p class="body" style="max-width:460px;">Precious photographs of Vakeel and the legends of music who came to Kochi.</p>
+      <p class="body" style="max-width:460px;">Precious photographs of Vakeel Sahib and the legends of music who came to Kochi — moments when history was quietly being made.</p>
     </div>
     <div class="gallery-grid reveal delay1">
       <div class="gcell gcell-photo"><img src="abdul_kadhar.png" alt="Abdul Khadar Vakeel"><div class="gcell-caption">Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ</div></div>
-      <!-- FIX #5: Added "coming soon" labels to placeholder gallery cells -->
-      <div class="gcell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span class="gcell-label">Mehfil</span><span class="gcell-soon">Photo coming soon</span></div>
-      <div class="gcell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span class="gcell-label">Legends</span><span class="gcell-soon">Photo coming soon</span></div>
-      <div class="gcell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span class="gcell-label">Family</span><span class="gcell-soon">Photo coming soon</span></div>
-      <div class="gcell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span class="gcell-label">Kochi</span><span class="gcell-soon">Photo coming soon</span></div>
+      <div class="gcell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span class="gcell-label">Mehfil</span></div>
+      <div class="gcell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span class="gcell-label">Legends</span></div>
+      <div class="gcell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span class="gcell-label">Family</span></div>
+      <div class="gcell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span class="gcell-label">Kochi</span></div>
     </div>
+    <div class="gallery-cta reveal">ഉടൻ · Coming Soon</div>
   </div>
 </div>
 
-<!-- DISCUSSION FORUM -->
+<!-- MEMORIES -->
 <div id="memories">
 <div class="memory-wrap">
   <div class="reveal">
-    <div class="eyebrow">Majlis · ഓർമ്മകൾ</div>
-    <h2 class="heading">Discussion<br><em>Forum</em></h2>
+    <div class="eyebrow">Share · ഓർമ്മകൾ</div>
+    <h2 class="heading">Your<br><em>Memories</em></h2>
     <p class="body ml" style="margin-top:1.5rem;opacity:.55;font-size:.95rem;line-height:2;">
-      വക്കീലിനെ നേരിട്ട് അറിയുന്നവരോ അദ്ദേഹത്തിന്റെ മെഹ്ഫിലുകളിൽ പങ്കെടുത്തവരോ ആയവർക്ക് ഇവിടെ ഓർമ്മകൾ പങ്കുവെക്കാം.
+      അബ്ദുൾ ഖാദർ വക്കീലിനെ നേരിട്ട് അറിയുന്നവരോ അദ്ദേഹത്തിന്റെ മെഹ്ഫിലുകളിൽ പങ്കെടുത്തവരോ — ആ ഓർമ്മകൾ ഇവിടെ പങ്കുവെക്കാം.
     </p>
-    
   </div>
-
-  <div class="reveal delay1" style="margin-top: 2.5rem;">
-
-    <!-- Memory Submission Form -->
-    <form id="memoryForm" action="https://formspree.io/f/mojnlagy" method="POST" style="background: rgba(17,14,7,0.6); border: 1px solid rgba(196,154,42,0.15); padding: 3rem;">
-      
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
-        <div>
-          <label style="display:block; font-size:0.65rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--amber); margin-bottom:0.6rem;">Your Name · പേര്</label>
-          <input type="text" name="name" required
-            style="width:100%; background:rgba(196,154,42,0.05); border:1px solid rgba(196,154,42,0.2); padding:0.8rem 1rem; color:var(--cream); font-family:'Noto Serif Malayalam',serif; font-size:0.95rem; outline:none; transition:border 0.3s;"
-            onfocus="this.style.borderColor='rgba(196,154,42,0.6)'" 
-            onblur="this.style.borderColor='rgba(196,154,42,0.2)'"
-            placeholder="നിങ്ങളുടെ പേര്">
-        </div>
-        <div>
-          <label style="display:block; font-size:0.65rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--amber); margin-bottom:0.6rem;">Connection to Vakeel · ബന്ധം</label>
-          <input type="text" name="connection"
-            style="width:100%; background:rgba(196,154,42,0.05); border:1px solid rgba(196,154,42,0.2); padding:0.8rem 1rem; color:var(--cream); font-family:'Noto Serif Malayalam',serif; font-size:0.95rem; outline:none; transition:border 0.3s;"
-            onfocus="this.style.borderColor='rgba(196,154,42,0.6)'" 
-            onblur="this.style.borderColor='rgba(196,154,42,0.2)'"
-            placeholder="സുഹൃത്ത്, അയൽക്കാരൻ...">
-        </div>
-      </div>
-
-      <div style="margin-bottom: 2rem;">
-        <label style="display:block; font-size:0.65rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--amber); margin-bottom:0.6rem;">Your Memory · ഓർമ്മ</label>
-        <textarea name="memory" required rows="5"
-          style="width:100%; background:rgba(196,154,42,0.05); border:1px solid rgba(196,154,42,0.2); padding:0.8rem 1rem; color:var(--cream); font-family:'Noto Serif Malayalam',serif; font-size:0.95rem; outline:none; transition:border 0.3s; resize:vertical; line-height:1.8;"
-          onfocus="this.style.borderColor='rgba(196,154,42,0.6)'" 
-          onblur="this.style.borderColor='rgba(196,154,42,0.2)'"
-          placeholder="വക്കീലുമായി ബന്ധപ്പെട്ട നിങ്ങളുടെ ഓർമ്മകൾ ഇവിടെ എഴുതൂ..."></textarea>
-      </div>
-
-      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
-        <p style="font-size:0.78rem; color:rgba(240,230,208,0.3); font-style:italic; font-family:'Noto Serif Malayalam',serif;">
-          നിങ്ങളുടെ ഓർമ്മ ഞങ്ങൾക്ക് വലിയ സമ്മാനമാണ്.
-        </p>
-        <button type="submit"
-          style="background:transparent; border:1px solid rgba(196,154,42,0.5); color:var(--gold); font-size:0.68rem; letter-spacing:0.35em; text-transform:uppercase; padding:0.75rem 2rem; cursor:pointer; transition:all 0.3s; font-family:'EB Garamond',serif;"
-          onmouseover="this.style.background='rgba(196,154,42,0.15)';this.style.borderColor='var(--gold)'" 
-          onmouseout="this.style.background='transparent';this.style.borderColor='rgba(196,154,42,0.5)'">
-          Share Memory · അയക്കൂ ↗
-        </button>
-      </div>
-
-      <div id="formSuccess" style="display:none; margin-top:1.5rem; padding:1rem 1.5rem; border-left:2px solid var(--amber); background:rgba(196,154,42,0.07);">
-        <p style="font-family:'Noto Serif Malayalam',serif; color:var(--gold-pale); font-size:0.95rem;">നന്ദി! നിങ്ങളുടെ ഓർമ്മ ലഭിച്ചു. · Thank you, your memory has been received.</p>
-      </div>
-    </form>
-
-    <script>
-    const form = document.getElementById('memoryForm');
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const data = new FormData(form);
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-      if (response.ok) {
-        form.reset();
-        document.getElementById('formSuccess').style.display = 'block';
-      }
-    });
-    </script>
-
-  </div>
+  <form class="form reveal delay1" id="memForm" onsubmit="submitForm(event)">
+    <div class="field"><input type="text" id="fn" placeholder=" " required><label for="fn">Name · പേര്</label></div>
+    <div class="field"><input type="text" id="fc" placeholder=" "><label for="fc">Your Connection · ബന്ധം</label></div>
+    <div class="field"><textarea id="fm" rows="5" placeholder=" " required></textarea><label for="fm">Memory or Tribute · ഓർമ്മ</label></div>
+    <button type="submit" class="btn-submit">Submit · അയക്കുക</button>
+  </form>
+  <p id="thanks" style="display:none;margin-top:2rem;font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-style:italic;color:var(--amber);opacity:.8;">
+    നന്ദി — Thank you for sharing your memory.
+  </p>
 </div>
 </div>
 
@@ -689,21 +573,7 @@ footer p span { color:var(--amber); opacity:.5; }
 </footer>
 
 <script>
-// Hamburger menu
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  mobileMenu.classList.toggle('open');
-});
-document.querySelectorAll('.mm-link').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('open');
-    mobileMenu.classList.remove('open');
-  });
-});
-
-// Cursor — desktop only
+// Cursor
 const cur = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
 let mx=-100,my=-100,rx=-100,ry=-100;
@@ -714,8 +584,7 @@ document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
   ring.style.left=rx-16+'px'; ring.style.top=ry-16+'px';
   requestAnimationFrame(tick);
 })();
-// FIX #4: Ensures cursor scales on ALL interactive elements including legend cards
-document.querySelectorAll('a, button, .legend-card, .fam-card, .gcell').forEach(el=>{
+document.querySelectorAll('a,button').forEach(el=>{
   el.addEventListener('mouseenter',()=>{cur.style.transform='scale(2.5)';ring.style.transform='scale(1.5)';});
   el.addEventListener('mouseleave',()=>{cur.style.transform='scale(1)';ring.style.transform='scale(1)';});
 });
@@ -735,6 +604,13 @@ const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
 },{threshold:.1});
 revs.forEach(r=>obs.observe(r));
+
+// Form
+function submitForm(e){
+  e.preventDefault();
+  document.getElementById('memForm').style.display='none';
+  document.getElementById('thanks').style.display='block';
+}
 </script>
 </body>
 </html>
