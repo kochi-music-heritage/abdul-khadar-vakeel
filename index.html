@@ -603,10 +603,13 @@ footer p span { color:var(--amber); opacity:.5; }
       അബ്ദുൾ ഖാദർ വക്കീലിനെ നേരിട്ട് അറിയുന്നവരോ അദ്ദേഹത്തിന്റെ മെഹ്ഫിലുകളിൽ പങ്കെടുത്തവരോ — ആ ഓർമ്മകൾ ഇവിടെ പങ്കുവെക്കാം.
     </p>
   </div>
-  <form class="form reveal delay1" id="memForm" onsubmit="submitForm(event)">
-    <div class="field"><input type="text" id="fn" placeholder=" " required><label for="fn">Name · പേര്</label></div>
-    <div class="field"><input type="text" id="fc" placeholder=" "><label for="fc">Your Connection · ബന്ധം</label></div>
-    <div class="field"><textarea id="fm" rows="5" placeholder=" " required></textarea><label for="fm">Memory or Tribute · ഓർമ്മ</label></div>
+  <form class="form reveal delay1" id="memForm" action="https://formspree.io/f/mojnlagy" method="POST">
+    <input type="hidden" name="_next" value="https://kochi-music-heritage.github.io/abdul-khadar-vakeel/">
+    <input type="hidden" name="_subject" value="New Memory — Abdul Khadar Vakeel Tribute">
+    <div class="field"><input type="text" id="fn" name="name" placeholder=" " required><label for="fn">Name · പേര്</label></div>
+    <div class="field"><input type="text" id="fc" name="connection" placeholder=" "><label for="fc">Your Connection · ബന്ധം</label></div>
+    <div class="field"><input type="email" id="fe" name="email" placeholder=" "><label for="fe">Email · ഇമെയിൽ</label></div>
+    <div class="field"><textarea id="fm" name="memory" rows="5" placeholder=" " required></textarea><label for="fm">Memory or Tribute · ഓർമ്മ</label></div>
     <button type="submit" class="btn-submit">Submit · അയക്കുക</button>
   </form>
   <p id="thanks" style="display:none;margin-top:2rem;font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-style:italic;color:var(--amber);opacity:.8;">
