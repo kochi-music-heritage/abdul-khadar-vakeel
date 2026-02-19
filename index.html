@@ -674,7 +674,7 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:.1});
 revs.forEach(r=>obs.observe(r));
 
-// Music — plays on first scroll
+// Music — plays on first click or tap
 const music = document.getElementById('bgMusic');
 const musicBtn = document.getElementById('musicBtn');
 const iconSound = document.getElementById('iconSound');
@@ -689,10 +689,11 @@ function startMusic() {
   }
 }
 
-window.addEventListener('scroll', () => { startMusic(); }, { once: true });
-document.addEventListener('touchstart', () => { startMusic(); }, { once: true });
+document.addEventListener('click', () => { startMusic(); }, { once: true });
+document.addEventListener('touchend', () => { startMusic(); }, { once: true });
 
-musicBtn.addEventListener('click', () => {
+musicBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
   muted = !muted;
   music.muted = muted;
   if (!musicStarted) startMusic();
