@@ -744,7 +744,7 @@ function saveMemory(name, connection, memory) {
   var now = new Date().toLocaleDateString('en-IN', { year:'numeric', month:'long', day:'numeric' });
   fetch(GAS_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'text/plain'},
     body: JSON.stringify({ name: name, connection: connection, memory: memory, date: now })
   })
   .then(function() { setTimeout(loadMemories, 1000); })
