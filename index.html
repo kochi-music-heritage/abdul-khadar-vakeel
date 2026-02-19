@@ -742,11 +742,12 @@ function loadMemories() {
 
 function saveMemory(name, connection, memory) {
   var now = new Date().toLocaleDateString('en-IN', { year:'numeric', month:'long', day:'numeric' });
-  fetch(GAS_URL, {
+ fetch(GAS_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'text/plain'},
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
     body: JSON.stringify({ name: name, connection: connection, memory: memory, date: now })
-  })
+})
   .then(function() { setTimeout(loadMemories, 1000); })
   .catch(function() { setTimeout(loadMemories, 1000); });
 }
