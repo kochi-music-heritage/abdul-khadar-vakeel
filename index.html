@@ -735,9 +735,9 @@ musicBtn.addEventListener('click', (e) => {
 });
 
 
-// ── Memories: stored in JSONBin (free public storage) ──
 
-var BIN_URL = 'https://api.npoint.io/a20595cdbf48b0715c93';
+// ── Memories: stored in Google Sheets via SheetDB ──
+var SHEETDB_URL = 'https://sheetdb.io/api/v1/0cet9guktr3vv';
 
 function formatDate(iso) {
   var d = new Date(iso);
@@ -754,48 +754,43 @@ function renderMemories(memories) {
     grid.innerHTML = '<div class="memories-empty">Be the first to share a memory · ആദ്യത്തെ ഓർമ്മ പങ്കുവെക്കൂ</div>';
     return;
   }
+  // Show newest first
   var sorted = memories.slice().reverse();
   grid.innerHTML = sorted.map(function(m) {
     return '<div class="mem-card">' +
-      '<div class="mem-card-name">' + escHtml(m.name) + '</div>' +
+      '<div class="mem-card-name">' + escHtml(m.name || '') + '</div>' +
       (m.connection ? '<div class="mem-card-conn">' + escHtml(m.connection) + '</div>' : '') +
-      '<div class="mem-card-text">' + escHtml(m.memory) + '</div>' +
-      '<div class="mem-card-date">' + formatDate(m.date) + '</div>' +
+      '<div class="mem-card-text">' + escHtml(m.memory || '') + '</div>' +
+      '<div class="mem-card-date">' + escHtml(m.date || '') + '</div>' +
       '</div>';
   }).join('');
 }
 
 function loadMemories() {
-  fetch(BIN_URL)
+  fetch(SHEETDB_URL)
     .then(function(r) { return r.json(); })
     .then(function(data) {
-      var memories = (data && data.memories) ? data.memories : [];
-      renderMemories(memories);
+      renderMemories(Array.isArray(data) ? data : []);
     })
     .catch(function() {
       document.getElementById('memoriesGrid').innerHTML = '<div class="memories-empty">ഓർമ്മകൾ ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല. Could not load memories.</div>';
     });
 }
 
-function saveMemory(newEntry) {
-  fetch(BIN_URL)
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      var memories = (data && data.memories) ? data.memories : [];
-      memories.push(newEntry);
-      return fetch(BIN_URL, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ memories: memories })
-      });
-    })
-    .then(function() { loadMemories(); })
-    .catch(function() { loadMemories(); });
+function saveMemory(name, connection, memory) {
+  var now = new Date().toLocaleDateString('en-IN', { year:'numeric', month:'long', day:'numeric' });
+  fetch(SHEETDB_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ data: [{ name: name, connection: connection, memory: memory, date: now }] })
+  })
+  .then(function() { loadMemories(); })
+  .catch(function() { loadMemories(); });
 }
 
 loadMemories();
 
-// Form submission — sends to Formspree (email to you) AND saves to public wall
+// Form submission — sends to Formspree (email) AND saves to Google Sheets (public wall)
 document.getElementById('memForm').addEventListener('submit', function(e) {
   e.preventDefault();
   var form = this;
@@ -813,7 +808,7 @@ document.getElementById('memForm').addEventListener('submit', function(e) {
     headers: { 'Accept': 'application/json' }
   }).then(function(res) {
     if (res.ok) {
-      saveMemory({ name: name, connection: connection, memory: memory, date: new Date().toISOString() });
+      saveMemory(name, connection, memory);
       form.style.display = 'none';
       document.getElementById('thanks').style.display = 'block';
     } else {
