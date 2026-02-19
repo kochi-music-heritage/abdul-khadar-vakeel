@@ -604,7 +604,6 @@ footer p span { color:var(--amber); opacity:.5; }
     </p>
   </div>
   <form class="form reveal delay1" id="memForm" action="https://formspree.io/f/mojnlagy" method="POST">
-    <input type="hidden" name="_next" value="https://kochi-music-heritage.github.io/abdul-khadar-vakeel/">
     <input type="hidden" name="_subject" value="New Memory — Abdul Khadar Vakeel Tribute">
     <div class="field"><input type="text" id="fn" name="name" placeholder=" " required><label for="fn">Name · പേര്</label></div>
     <div class="field"><input type="text" id="fc" name="connection" placeholder=" "><label for="fc">Your Connection · ബന്ധം</label></div>
@@ -707,11 +706,31 @@ musicBtn.addEventListener('click', (e) => {
 });
 
 
-function submitForm(e){
+// Form submission — sends to Formspree and shows thank you message
+document.getElementById('memForm').addEventListener('submit', function(e) {
   e.preventDefault();
-  document.getElementById('memForm').style.display='none';
-  document.getElementById('thanks').style.display='block';
-}
+  var btn = this.querySelector('.btn-submit');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  fetch('https://formspree.io/f/mojnlagy', {
+    method: 'POST',
+    body: new FormData(this),
+    headers: { 'Accept': 'application/json' }
+  }).then(function(res) {
+    if (res.ok) {
+      document.getElementById('memForm').style.display = 'none';
+      document.getElementById('thanks').style.display = 'block';
+    } else {
+      btn.textContent = 'Submit · അയക്കുക';
+      btn.disabled = false;
+      alert('Something went wrong. Please try again.');
+    }
+  }).catch(function() {
+    btn.textContent = 'Submit · അയക്കുക';
+    btn.disabled = false;
+    alert('Network error. Please check your connection and try again.');
+  });
+});
 </script>
 </body>
 </html>
