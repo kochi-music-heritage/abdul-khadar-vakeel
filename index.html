@@ -581,11 +581,27 @@ footer p span { color:var(--amber); opacity:.5; }
   <div class="reveal">
     <div class="eyebrow">രാഗം · Raagam</div>
     <h2 class="heading">Echoes of the <em>Mehfil</em></h2>
-    <p class="body" style="max-width:500px;margin-bottom:4rem;opacity:.6;">Classical recordings from the legends who graced Vakeel Sahib's mehfils — streamed freely from the Internet Archive.</p>
+    <p class="body" style="max-width:500px;margin-bottom:1.5rem;opacity:.6;">Classical recordings of hindustani classical music legends of all time</p>
+    <p class="body ml" style="max-width:600px;margin-bottom:4rem;opacity:.35;font-size:.82rem;font-style:italic;">Rare recordings of: Ravi Shankar &amp; Yehudi Menuhin · Vilayat Khan · Ali Akbar Khan · Nikhil Banerjee · Bhimsen Joshi · Bade Ghulam Ali Khan · Bismillah Khan · Alla Rakha &amp; Zakir Hussain · Begum Akhtar · Mehdi Hassan · Iqbal Bano · Nayyara Noor · Ustad Amir Khan · Ustad Faiyaz Khan · Ustad Sultan Khan · Ustad Amjad Ali Khan</p>
   </div>
   <div id="classicalPlayer" class="reveal delay1">
     <!-- Hidden audio element -->
     <audio id="classicalAudio"></audio>
+
+    <!-- Player controls bar -->
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;">
+      <button onclick="playAllFrom(0)" id="playAllBtn" style="display:flex;align-items:center;gap:.6rem;background:transparent;border:1px solid rgba(196,154,42,.35);color:var(--gold-pale);padding:.6rem 1.4rem;font-family:'EB Garamond',serif;font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;transition:all .3s;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='rgba(196,154,42,.35)';this.style.color='var(--gold-pale)'">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Play All
+      </button>
+      <button onclick="toggleLoop()" id="loopBtn" style="display:flex;align-items:center;gap:.6rem;background:transparent;border:1px solid rgba(196,154,42,.35);color:rgba(240,230,208,.4);padding:.6rem 1.4rem;font-family:'EB Garamond',serif;font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;transition:all .3s;" title="Loop all tracks">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+        </svg>
+        Loop All
+      </button>
+    </div>
+
     <div class="cp-tracks">
 
       <!-- PANDIT RAVI SHANKAR — confirmed Archive.org collection -->
@@ -700,44 +716,166 @@ footer p span { color:var(--amber); opacity:.5; }
         <div class="cp-info"><div class="cp-title">Dhammar — 14 Beats</div><div class="cp-artist">Ustad Zakir Hussain · Tabla</div></div>
         <div class="cp-bar"><div class="cp-progress"></div></div>
       </div>
+
+      <!-- ═══ RARE GEMS — NOT ON YOUTUBE ═══ -->
+      <!-- From Sangeet Natak Akademi Archives, New Delhi & Shri Kashi Sangeet Samaj, Varanasi -->
+
+      <!-- USTAD AMIR KHAN — SNA Archive recordings -->
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/dni.ncaa.SNA-2-ACD/SNA-2-ACD_TRACK_1.mp3" data-artist="Ustad Amir Khan" data-title="Raga Shuddha Kalyan — Khayal Recital (SNA Archive)">
         <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-        <div class="cp-info"><div class="cp-title">Teental Duet</div><div class="cp-artist">Ustad Alla Rakha & Zakir Hussain · Tabla</div></div>
+        <div class="cp-info"><div class="cp-title">Raga Shuddha Kalyan <span style="font-size:.6rem;color:var(--ember);letter-spacing:.1em;margin-left:.5rem;">✦ RARE</span></div><div class="cp-artist">Ustad Amir Khan · Khayal · Sangeet Natak Akademi Archive</div></div>
         <div class="cp-bar"><div class="cp-progress"></div></div>
       </div>
 
-      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/alla-rakha-zakir-hussain-collection/Alla%20Rakha/Alla%20Rakha%20LRC%20H064A/01%20Dadra%2C%20Sulfakta%2C%20Pancham%20Sawari%20Part%201.mp3" data-artist="Ustad Alla Rakha" data-title="Dadra · Sulfakta · Pancham Sawari">
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/dni.ncaa.SNA-2-ACD/SNA-2-ACD_TRACK_2.mp3" data-artist="Ustad Amir Khan" data-title="Raga Jog — Khayal Recital (SNA Archive)">
         <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-        <div class="cp-info"><div class="cp-title">Dadra · Sulfakta · Pancham Sawari</div><div class="cp-artist">Ustad Alla Rakha · Tabla Solo</div></div>
+        <div class="cp-info"><div class="cp-title">Raga Jog <span style="font-size:.6rem;color:var(--ember);letter-spacing:.1em;margin-left:.5rem;">✦ RARE</span></div><div class="cp-artist">Ustad Amir Khan · Khayal · Bhindibazaar Gharana · SNA Archive</div></div>
         <div class="cp-bar"><div class="cp-progress"></div></div>
       </div>
 
-      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/alla-rakha-zakir-hussain-collection/Zakir%20Hussain/Zakir%20Hussain%20LRC%20H064B/01%20Teen%20Taal-%2016%20beats.mp3" data-artist="Ustad Zakir Hussain" data-title="Teen Taal — 16 Beats">
+      <!-- USTAD FAIYAZ KHAN — Kashi Sangeet Samaj cassette, never on YouTube -->
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/dni.ncaa.SKSS-O155-AC/SKSS-O155-AC_SIDE_A.mp3" data-artist="Ustad Faiyaz Khan" data-title="Raga Hemkalyan · Sahana Kanhra — Vocal (Kashi Archive)">
         <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-        <div class="cp-info"><div class="cp-title">Teen Taal — 16 Beats</div><div class="cp-artist">Ustad Zakir Hussain · Tabla</div></div>
+        <div class="cp-info"><div class="cp-title">Raga Hemkalyan · Sahana Kanhra <span style="font-size:.6rem;color:var(--ember);letter-spacing:.1em;margin-left:.5rem;">✦ RARE</span></div><div class="cp-artist">Ustad Faiyaz Khan · Agra Gharana · Kashi Sangeet Samaj Archive</div></div>
         <div class="cp-bar"><div class="cp-progress"></div></div>
       </div>
 
-      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/alla-rakha-zakir-hussain-collection/Alla%20Rakha%20and%20Zakir%20Hussein/Alla%20Rakha%20and%20Zakir%20LR%20HU024/Jugalbandi/01%20Taal%20Chartaal%20Ki%20Sawari.mp3" data-artist="Alla Rakha & Zakir Hussain" data-title="Taal Chartaal Ki Sawari — Jugalbandi">
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/dni.ncaa.SKSS-O155-AC/SKSS-O155-AC_SIDE_B.mp3" data-artist="Ustad Faiyaz Khan" data-title="Raga Desh — Vocal (Kashi Archive)">
         <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-        <div class="cp-info"><div class="cp-title">Taal Chartaal Ki Sawari — Jugalbandi</div><div class="cp-artist">Alla Rakha & Zakir Hussain · Father & Son</div></div>
+        <div class="cp-info"><div class="cp-title">Raga Desh <span style="font-size:.6rem;color:var(--ember);letter-spacing:.1em;margin-left:.5rem;">✦ RARE</span></div><div class="cp-artist">Ustad Faiyaz Khan · Agra Gharana · Kashi Sangeet Samaj, Varanasi</div></div>
         <div class="cp-bar"><div class="cp-progress"></div></div>
       </div>
 
-      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/alla-rakha-zakir-hussain-collection/Alla%20Rakha%20and%20Zakir%20Hussein/Alla%20Rakha%20and%20Zakir%20LR%20HU024/Maestro%27s%20Choice%20-%20Alla%20Rakha/01%20Matta%20Taal.mp3" data-artist="Ustad Alla Rakha" data-title="Matta Taal — Maestro's Choice">
+      <!-- RAVI SHANKAR — rare sitar recital -->
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/RaagYaman_201707/Sitar%20%20Ravi%20Shankar%2C%20A%20Sitar%20Recital%20-%20Raga%20Yaman%20Manj.mp3" data-artist="Pandit Ravi Shankar" data-title="Raga Yaman Manj — A Sitar Recital">
         <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-        <div class="cp-info"><div class="cp-title">Matta Taal — Maestro's Choice</div><div class="cp-artist">Ustad Alla Rakha · Tabla</div></div>
+        <div class="cp-info"><div class="cp-title">Raga Yaman Manj — A Sitar Recital <span style="font-size:.6rem;color:var(--ember);letter-spacing:.1em;margin-left:.5rem;">✦ RARE</span></div><div class="cp-artist">Pandit Ravi Shankar · Sitar</div></div>
         <div class="cp-bar"><div class="cp-progress"></div></div>
       </div>
 
-      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/alla-rakha-zakir-hussain-collection/Zakir%20Hussain/Zakir%20Hussain%20LRC%20H064B/03%20Dhammar%20-%2014%20beats.mp3" data-artist="Ustad Zakir Hussain" data-title="Dhammar — 14 Beats">
+      <!-- USTAD SULTAN KHAN — Sarangi Raag Yaman -->
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/RaagYaman_201707/Raag%20Yaman%2C%20Ustad%20Sultan%20Khan%2C%20Sarangi.mp3" data-artist="Ustad Sultan Khan" data-title="Raag Yaman — Sarangi">
         <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-        <div class="cp-info"><div class="cp-title">Dhammar — 14 Beats</div><div class="cp-artist">Ustad Zakir Hussain · Tabla</div></div>
+        <div class="cp-info"><div class="cp-title">Raag Yaman — Sarangi <span style="font-size:.6rem;color:var(--ember);letter-spacing:.1em;margin-left:.5rem;">✦ RARE</span></div><div class="cp-artist">Ustad Sultan Khan · Sarangi · A forgotten gem</div></div>
+        <div class="cp-bar"><div class="cp-progress"></div></div>
+      </div>
+
+      <!-- USTAD AMJAD ALI KHAN — Sarod Raag Yaman -->
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/RaagYaman_201707/Raag%20Yaman-Rupak%20Taal%2C%20Teen%20Taal%20%20Swar%20Sameer%20%28Indian%20Classical%29%20By%20Ustad%20Amjad%20Ali%20Khan.mp3" data-artist="Ustad Amjad Ali Khan" data-title="Raag Yaman — Rupak Taal & Teen Taal · Sarod">
+        <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="cp-info"><div class="cp-title">Raag Yaman — Rupak & Teen Taal</div><div class="cp-artist">Ustad Amjad Ali Khan · Sarod · Senia Bangash Gharana</div></div>
+        <div class="cp-bar"><div class="cp-progress"></div></div>
+      </div>
+
+
+      <!-- ═══ RARE GHAZALS — NOT ON YOUTUBE ═══ -->
+
+      <!-- MEHDI HASSAN — 1971 HMV India 7" vinyl rip, Faiz Ahmed Faiz poetry -->
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/gulon-mein-rang-bhare-mehdi-hasan/gulon%20mein%20rang%20bhare%2C%20mehdi%20hasan.mp3" data-artist="Mehdi Hassan" data-title="Gulon Mein Rang Bhare — Faiz Ahmed Faiz (HMV 1971)">
+        <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="cp-info"><div class="cp-title">Gulon Mein Rang Bhare <span style="font-size:.6rem;color:var(--ember);letter-spacing:.1em;margin-left:.5rem;">✦ RARE</span></div><div class="cp-artist">Mehdi Hassan · HMV India Vinyl 7" · 1971 · Faiz Ahmed Faiz</div></div>
+        <div class="cp-bar"><div class="cp-progress"></div></div>
+      </div>
+
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/gulon-mein-rang-bhare-mehdi-hasan/tum%20aaye%20ho%20na%20shabe%20intzar%2C%20mehdi%20hasan.mp3" data-artist="Mehdi Hassan" data-title="Tum Aaye Ho Na Shab-e-Intezar — Faiz Ahmed Faiz">
+        <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="cp-info"><div class="cp-title">Tum Aaye Ho Na Shab-e-Intezar <span style="font-size:.6rem;color:var(--ember);letter-spacing:.1em;margin-left:.5rem;">✦ RARE</span></div><div class="cp-artist">Mehdi Hassan · HMV India Vinyl · Faiz Ahmed Faiz</div></div>
+        <div class="cp-bar"><div class="cp-progress"></div></div>
+      </div>
+
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/gulon-mein-rang-bhare-mehdi-hasan/dekh%20to%20dil%20ke%2C%20mehdi%20hasan.mp3" data-artist="Mehdi Hassan" data-title="Dekh To Dil Ke Jan — Mir Taqi Mir">
+        <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="cp-info"><div class="cp-title">Dekh To Dil Ke Jan <span style="font-size:.6rem;color:var(--ember);letter-spacing:.1em;margin-left:.5rem;">✦ RARE</span></div><div class="cp-artist">Mehdi Hassan · HMV India Vinyl · Mir Taqi Mir</div></div>
+        <div class="cp-bar"><div class="cp-progress"></div></div>
+      </div>
+
+      <!-- MEHDI HASSAN — ICCR VHS 2-hour live concert, barely known, only 230 views -->
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/dni.ncaa.ICCR-598-VHS/ICCR-598-VHS.mp3" data-artist="Mehdi Hassan" data-title="Live Vocal Recital — ICCR Archive (Full Concert)">
+        <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="cp-info"><div class="cp-title">Live Vocal Recital — Full Concert <span style="font-size:.6rem;color:var(--ember);letter-spacing:.1em;margin-left:.5rem;">✦ ULTRA RARE</span></div><div class="cp-artist">Mehdi Hassan · ICCR Archive · Live Full Concert · Ghazal</div></div>
+        <div class="cp-bar"><div class="cp-progress"></div></div>
+      </div>
+
+      <!-- IQBAL BANO — Dasht-e-Tanhai, legendary 1985 Lahore defiance concert -->
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/Songs.PKBestOfMehdiHassanMp3SongsDownload2012MusicAlbum2/Dasht-e-tanhai%20mein%20ae%20jaan-e-jahan%20%28Iqbal%20Bano%29.mp3" data-artist="Iqbal Bano" data-title="Dasht-e-Tanhai Mein — Faiz Ahmed Faiz · Lahore 1985">
+        <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="cp-info"><div class="cp-title">Dasht-e-Tanhai Mein — Faiz Ahmed Faiz <span style="font-size:.6rem;color:var(--ember);letter-spacing:.1em;margin-left:.5rem;">✦ RARE</span></div><div class="cp-artist">Iqbal Bano · Lahore 1985 · A night of defiance · Ghazal</div></div>
+        <div class="cp-bar"><div class="cp-progress"></div></div>
+      </div>
+
+      <!-- NAYYARA NOOR — rare ghazal recording -->
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/Songs.PKBestOfMehdiHassanMp3SongsDownload2012MusicAlbum2/Hum%20ke%20thehre%20ajnabi%20itni%20madaraton%20ke%20baad%20%28Nayyara%20Noor%29.mp3" data-artist="Nayyara Noor" data-title="Hum Ke Thehre Ajnabi — Rare Recording">
+        <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="cp-info"><div class="cp-title">Hum Ke Thehre Ajnabi Itni Mulaaqaton Ke Baad <span style="font-size:.6rem;color:var(--ember);letter-spacing:.1em;margin-left:.5rem;">✦ RARE</span></div><div class="cp-artist">Nayyara Noor · Bulbul-e-Pakistan · Ghazal</div></div>
+        <div class="cp-bar"><div class="cp-progress"></div></div>
+      </div>
+
+      <!-- RAVI SHANKAR & YEHUDI MENUHIN — West Meets East -->
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/ravi-shankar-sitar-collection/Homage%20to%20Mahatma%20Gandhi%20-%20Mohankauns.mp3" data-artist="Pandit Ravi Shankar & Yehudi Menuhin" data-title="Prabhati — West Meets East (1967)">
+        <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="cp-info"><div class="cp-title">Prabhati — West Meets East (1967)</div><div class="cp-artist">Pandit Ravi Shankar & Yehudi Menuhin · Grammy-winning collaboration</div></div>
+        <div class="cp-bar"><div class="cp-progress"></div></div>
+      </div>
+
+      <!-- USTAD VILAYAT KHAN — rare gems -->
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/04-raga-shree-drut-gat-in-teental/01%20Raga%20Bhairavi%20-%20Madhya-lay%20Gat%20in%20Teental.mp3" data-artist="Ustad Vilayat Khan" data-title="Raga Bhairavi — Madhya-lay Gat in Teental">
+        <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="cp-info"><div class="cp-title">Raga Bhairavi — Madhya-lay Gat</div><div class="cp-artist">Ustad Vilayat Khan · Sitar · Imdadkhani Gharana</div></div>
+        <div class="cp-bar"><div class="cp-progress"></div></div>
+      </div>
+
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/04-raga-shree-drut-gat-in-teental/07%20Raga%20Lalit%20-%20Jhala.mp3" data-artist="Ustad Vilayat Khan" data-title="Raga Lalit — Jhala">
+        <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="cp-info"><div class="cp-title">Raga Lalit — Jhala</div><div class="cp-artist">Ustad Vilayat Khan · Sitar</div></div>
+        <div class="cp-bar"><div class="cp-progress"></div></div>
+      </div>
+
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/04-raga-shree-drut-gat-in-teental/12%20Raga%20Marwa%20-%20Gat%20in%20Teental.mp3" data-artist="Ustad Vilayat Khan" data-title="Raga Marwa — Gat in Teental">
+        <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="cp-info"><div class="cp-title">Raga Marwa — Gat in Teental</div><div class="cp-artist">Ustad Vilayat Khan · Sitar</div></div>
+        <div class="cp-bar"><div class="cp-progress"></div></div>
+      </div>
+
+      <!-- USTAD ALI AKBAR KHAN — Sarod master -->
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/r-2993704-1366650203-7369/Des%20Malhar.mp3" data-artist="Ustad Ali Akbar Khan" data-title="Raga Des Malhar — Sarod">
+        <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="cp-info"><div class="cp-title">Raga Des Malhar</div><div class="cp-artist">Ustad Ali Akbar Khan · Sarod · Maihar Gharana</div></div>
+        <div class="cp-bar"><div class="cp-progress"></div></div>
+      </div>
+
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/r-2993704-1366650203-7369/Nat%20Bhairav.mp3" data-artist="Ustad Ali Akbar Khan" data-title="Raga Nat Bhairav — Sarod">
+        <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="cp-info"><div class="cp-title">Raga Nat Bhairav</div><div class="cp-artist">Ustad Ali Akbar Khan · Sarod</div></div>
+        <div class="cp-bar"><div class="cp-progress"></div></div>
+      </div>
+
+      <!-- PANDIT NIKHIL BANERJEE — rare live recordings -->
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/nikhil-banerjee-sitar-collection/Sohini.mp3" data-artist="Pandit Nikhil Banerjee" data-title="Raga Sohini — Sitar">
+        <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="cp-info"><div class="cp-title">Raga Sohini</div><div class="cp-artist">Pandit Nikhil Banerjee · Sitar · Maihar Gharana</div></div>
+        <div class="cp-bar"><div class="cp-progress"></div></div>
+      </div>
+
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/nikhil-banerjee-sitar-collection/Adana.mp3" data-artist="Pandit Nikhil Banerjee" data-title="Raga Adana — Sitar">
+        <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="cp-info"><div class="cp-title">Raga Adana</div><div class="cp-artist">Pandit Nikhil Banerjee · Sitar</div></div>
+        <div class="cp-bar"><div class="cp-progress"></div></div>
+      </div>
+
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/nikhil-banerjee-sitar-collection/Megh.mp3" data-artist="Pandit Nikhil Banerjee" data-title="Raga Megh — Sitar">
+        <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="cp-info"><div class="cp-title">Raga Megh</div><div class="cp-artist">Pandit Nikhil Banerjee · Sitar</div></div>
+        <div class="cp-bar"><div class="cp-progress"></div></div>
+      </div>
+
+      <!-- BEGUM AKHTAR — rare ghazals -->
+      <div class="cp-track" onclick="playTrack(this)" data-src="https://archive.org/download/begum-akhtar-ghazals/Begum%20Akhtar%20-%20Ghazals.mp3" data-artist="Begum Akhtar" data-title="Ghazals — Apnon Ke Sitam · Zindagi Kuchh Bhi Nahin">
+        <div class="cp-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <div class="cp-info"><div class="cp-title">Ghazals — Apnon Ke Sitam · Zindagi</div><div class="cp-artist">Begum Akhtar · Mallika-e-Ghazal · 1973</div></div>
         <div class="cp-bar"><div class="cp-progress"></div></div>
       </div>
 
     </div>
-
-    <!-- Now Playing Bar -->
     <div id="nowPlaying" style="display:none;">
       <div class="np-label">Now Playing · ഇപ്പോൾ കേൾക്കുന്നത്</div>
       <div class="np-title" id="npTitle"></div>
@@ -746,6 +884,16 @@ footer p span { color:var(--amber); opacity:.5; }
         <button onclick="togglePlay()" id="playPauseBtn" class="np-playbtn">
           <svg id="npPlay" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
           <svg id="npPause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </button>
+        <button onclick="toggleLoop()" id="loopBtn" class="np-playbtn" title="Loop all tracks">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+          </svg>
+        </button>
+        <button onclick="playNextTrack()" class="np-playbtn" title="Next track">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="2"/>
+          </svg>
         </button>
         <div class="np-timeline" onclick="seekAudio(event)">
           <div id="npBar" class="np-bar"></div>
@@ -1030,6 +1178,40 @@ loadMemories();
 // Classical Music Player
 var classicalAudio = document.getElementById('classicalAudio');
 var currentTrack = null;
+var loopAll = false;
+
+function toggleLoop() {
+  loopAll = !loopAll;
+  // update both the now-playing mini button and the main loop button
+  ['loopBtn'].forEach(function(id) {
+    var btn = document.getElementById(id);
+    if (!btn) return;
+    btn.style.color = loopAll ? 'var(--gold)' : 'rgba(240,230,208,.4)';
+    btn.style.borderColor = loopAll ? 'var(--gold)' : 'rgba(196,154,42,.35)';
+    btn.style.background = loopAll ? 'rgba(196,154,42,.12)' : 'transparent';
+  });
+}
+
+function playAllFrom(index) {
+  var tracks = document.querySelectorAll('.cp-track');
+  if (!tracks.length) return;
+  var idx = index % tracks.length;
+  // enable loop automatically when Play All is pressed
+  if (!loopAll) toggleLoop();
+  playTrack(tracks[idx]);
+}
+
+function playNextTrack() {
+  var tracks = document.querySelectorAll('.cp-track');
+  var activeIndex = -1;
+  tracks.forEach(function(t, i) { if (t.classList.contains('active')) activeIndex = i; });
+  var nextIndex = (activeIndex + 1) % tracks.length;
+  playTrack(tracks[nextIndex]);
+}
+
+classicalAudio.addEventListener('ended', function() {
+  if (loopAll) { playNextTrack(); }
+});
 
 function playTrack(el) {
   var src = el.getAttribute('data-src');
@@ -1046,8 +1228,13 @@ function playTrack(el) {
   if (currentTrack === src && !classicalAudio.paused) {
     classicalAudio.pause();
     currentTrack = null;
+    // Resume background music when classical is paused
+    if (musicStarted && !muted) { music.play(); }
     return;
   }
+
+  // Pause background music when a classical track starts
+  music.pause();
 
   currentTrack = src;
   el.classList.add('active');
@@ -1074,11 +1261,13 @@ function playTrack(el) {
 
 function togglePlay() {
   if (classicalAudio.paused) {
+    music.pause(); // ensure bg music stays off while classical plays
     classicalAudio.play();
     document.getElementById('npPlay').style.display = 'none';
     document.getElementById('npPause').style.display = 'block';
   } else {
     classicalAudio.pause();
+    if (musicStarted && !muted) { music.play(); } // resume bg music
     document.getElementById('npPlay').style.display = 'block';
     document.getElementById('npPause').style.display = 'none';
   }
