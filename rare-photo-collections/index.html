@@ -8,300 +8,114 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-
 :root {
-  --night: #0a0804;
-  --deep: #110e07;
-  --bark: #1c1508;
-  --amber: #c49a2a;
-  --gold: #e8b84b;
-  --gold-pale: #f5d98a;
-  --cream: #f0e6d0;
-  --parchment: #e8d9be;
+  --night: #0a0804; --deep: #110e07; --bark: #1c1508;
+  --amber: #c49a2a; --gold: #e8b84b; --gold-pale: #f5d98a;
+  --cream: #f0e6d0; --parchment: #e8d9be;
 }
-
 body {
-  background: var(--night);
-  color: var(--cream);
+  background: var(--night); color: var(--cream);
   font-family: 'EB Garamond', 'Noto Serif Malayalam', serif;
-  overflow-x: hidden;
-  cursor: none;
+  overflow-x: hidden; cursor: none;
+  -webkit-user-select: none; user-select: none;
 }
-
-/* Custom cursor */
-.cursor {
-  position: fixed; width: 8px; height: 8px;
-  background: var(--gold); border-radius: 50%;
-  pointer-events: none; z-index: 9999;
-  transition: transform 0.15s ease; mix-blend-mode: difference;
-}
-.cursor-ring {
-  position: fixed; width: 32px; height: 32px;
-  border: 1px solid rgba(232,184,75,0.4); border-radius: 50%;
-  pointer-events: none; z-index: 9998; transition: all 0.4s ease;
-}
-
-/* Noise overlay */
-body::before {
-  content: ''; position: fixed; inset: 0; opacity: 0.03;
-  pointer-events: none; z-index: 1000;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 256px;
-}
+.cursor { position:fixed; width:8px; height:8px; background:var(--gold); border-radius:50%; pointer-events:none; z-index:9999; transition:transform 0.15s ease; mix-blend-mode:difference; }
+.cursor-ring { position:fixed; width:32px; height:32px; border:1px solid rgba(232,184,75,0.4); border-radius:50%; pointer-events:none; z-index:9998; transition:all 0.4s ease; }
+body::before { content:''; position:fixed; inset:0; opacity:0.03; pointer-events:none; z-index:1000; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size:256px; }
 
 /* Nav */
-.nav {
-  position: sticky; top: 0; z-index: 500;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 1.2rem 4rem;
-  background: rgba(10,8,4,0.92);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(196,154,42,0.1);
-}
+.nav { position:sticky; top:0; z-index:500; display:flex; justify-content:space-between; align-items:center; padding:1.2rem 4rem; background:rgba(10,8,4,0.92); backdrop-filter:blur(20px); border-bottom:1px solid rgba(196,154,42,0.1); }
 .nav-brand { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:500; color:var(--gold); letter-spacing:0.05em; text-decoration:none; }
-.nav-back {
-  font-size:.68rem; letter-spacing:.3em; text-transform:uppercase;
-  color:rgba(240,230,208,.4); text-decoration:none; transition:color .3s;
-  display:flex; align-items:center; gap:.6rem;
-}
+.nav-back { font-size:.68rem; letter-spacing:.3em; text-transform:uppercase; color:rgba(240,230,208,.4); text-decoration:none; transition:color .3s; display:flex; align-items:center; gap:.6rem; }
 .nav-back:hover { color:var(--gold); }
-.nav-back svg { opacity:.6; }
 
 /* Header */
-.page-header {
-  max-width: 860px; margin: 0 auto;
-  padding: 7rem 3rem 4rem;
-  text-align: center;
-}
-.eyebrow {
-  font-size:.65rem; letter-spacing:.5em; text-transform:uppercase;
-  color:var(--amber); margin-bottom:1.5rem; opacity:.8;
-}
-.heading {
-  font-family:'Cormorant Garamond',serif; font-weight:300;
-  font-size:clamp(2.2rem,5vw,4rem); line-height:1.1;
-  color:var(--cream); margin-bottom:2rem;
-}
+.page-header { max-width:860px; margin:0 auto; padding:7rem 3rem 4rem; text-align:center; }
+.eyebrow { font-size:.65rem; letter-spacing:.5em; text-transform:uppercase; color:var(--amber); margin-bottom:1.5rem; opacity:.8; }
+.heading { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(2.2rem,5vw,4rem); line-height:1.1; color:var(--cream); margin-bottom:2rem; }
 .heading em { font-style:italic; color:var(--gold); }
-.hero-line {
-  display:flex; align-items:center; gap:1.5rem;
-  width:180px; margin:0 auto 2.5rem;
-}
+.hero-line { display:flex; align-items:center; gap:1.5rem; width:180px; margin:0 auto 2.5rem; }
 .hero-line::before { content:''; flex:1; height:1px; background:linear-gradient(90deg,transparent,var(--amber)); }
 .hero-line::after  { content:''; flex:1; height:1px; background:linear-gradient(90deg,var(--amber),transparent); }
 .diamond { width:5px; height:5px; background:var(--gold); transform:rotate(45deg); }
 
 /* Message box */
-.message-box {
-  max-width: 700px; margin: 0 auto 6rem;
-  padding: 2.8rem 3.5rem;
-  border: 1px solid rgba(196,154,42,0.15);
-  background: linear-gradient(135deg, rgba(196,154,42,0.05), transparent 60%);
-  position: relative;
-}
-.message-box::before {
-  content:'\201C'; position:absolute; top:-.8rem; left:1.5rem;
-  font-family:'Cormorant Garamond',serif; font-size:5rem;
-  color:var(--amber); opacity:.2; line-height:1;
-}
-.message-text {
-  font-family:'Cormorant Garamond',serif; font-style:italic;
-  font-size:clamp(1.1rem,2vw,1.35rem); line-height:1.9;
-  color:var(--parchment);
-}
-.message-cta {
-  display:inline-block; margin-top:2rem;
-  font-size:.65rem; letter-spacing:.3em; text-transform:uppercase;
-  color:var(--amber); border:1px solid rgba(196,154,42,.3);
-  padding:.5rem 1.5rem; text-decoration:none; transition:all .3s;
-}
+.message-box { max-width:700px; margin:0 auto 6rem; padding:2.8rem 3.5rem; border:1px solid rgba(196,154,42,0.15); background:linear-gradient(135deg,rgba(196,154,42,0.05),transparent 60%); position:relative; }
+.message-box::before { content:'\201C'; position:absolute; top:-.8rem; left:1.5rem; font-family:'Cormorant Garamond',serif; font-size:5rem; color:var(--amber); opacity:.2; line-height:1; }
+.message-text { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(1.1rem,2vw,1.35rem); line-height:1.9; color:var(--parchment); }
+.message-cta { display:inline-block; margin-top:2rem; font-size:.65rem; letter-spacing:.3em; text-transform:uppercase; color:var(--amber); border:1px solid rgba(196,154,42,.3); padding:.5rem 1.5rem; text-decoration:none; transition:all .3s; }
 .message-cta:hover { border-color:var(--gold); color:var(--gold-pale); }
 
 /* Photo grid */
 .photos-section { max-width:1100px; margin:0 auto; padding:0 3rem 8rem; }
-.photos-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3px;
-  background: rgba(196,154,42,0.06);
-}
+.photos-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; background:rgba(196,154,42,0.06); }
 
-/* Each photo cell */
+/* Photo cell */
 .photo-cell {
-  position: relative; overflow: hidden;
-  aspect-ratio: 4/3;
-  background: var(--deep);
-  cursor: pointer !important;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  user-select: none;
+  position:relative; overflow:hidden; aspect-ratio:4/3;
+  background:var(--deep); cursor:pointer;
+  -webkit-touch-callout:none;
+  -webkit-user-select:none; user-select:none;
 }
-.photo-cell:active { opacity: 0.85; }
 .photo-cell img {
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: top;
-  display: block;
-  filter: sepia(20%) grayscale(10%);
-  transition: filter .5s, transform .5s;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-user-drag: none;
+  width:100%; height:100%; object-fit:cover; object-position:top; display:block;
+  filter:sepia(20%) grayscale(10%); transition:filter .5s, transform .5s;
+  -webkit-user-drag:none; pointer-events:none;
+  -webkit-touch-callout:none;
+}
+.photo-cell:hover img { filter:sepia(0%) grayscale(0%); transform:scale(1.03); }
+
+/* Transparent overlay — blocks all direct image interaction */
+.photo-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: transparent;
+  cursor: pointer;
   -webkit-touch-callout: none;
-  pointer-events: none;
-}
-.photo-cell:hover img {
-  filter: sepia(0%) grayscale(0%);
-  transform: scale(1.03);
+  -webkit-user-select: none;
+  user-select: none;
 }
 
-/* Watermark overlay on every photo */
+/* Watermark */
 .photo-cell::after {
-  content: '© Abdul Khadar Vakeel Family';
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
-  color: rgba(232,184,75,0.18);
-  pointer-events: none; z-index: 5;
-  text-align: center;
-  writing-mode: horizontal-tb;
-  background: repeating-linear-gradient(
-    -45deg,
-    transparent, transparent 55px,
-    rgba(232,184,75,0.04) 55px, rgba(232,184,75,0.04) 57px
-  );
+  content:'© Abdul Khadar Vakeel Family';
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  font-family:'Cormorant Garamond',serif; font-size:.7rem; letter-spacing:.2em; text-transform:uppercase;
+  color:rgba(232,184,75,0.18); pointer-events:none; z-index:5; text-align:center;
+  background:repeating-linear-gradient(-45deg,transparent,transparent 55px,rgba(232,184,75,0.04) 55px,rgba(232,184,75,0.04) 57px);
 }
 
-/* Caption bar */
-.photo-caption {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 2rem 1.2rem .9rem;
-  background: linear-gradient(to top, rgba(10,8,4,.9), transparent);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: .82rem; font-style: italic;
-  color: rgba(240,230,208,.6); letter-spacing: .04em;
-  z-index: 6; pointer-events: none;
-}
+/* Caption */
+.photo-caption { position:absolute; bottom:0; left:0; right:0; padding:2rem 1.2rem .9rem; background:linear-gradient(to top,rgba(10,8,4,.9),transparent); font-family:'Cormorant Garamond',serif; font-size:.82rem; font-style:italic; color:rgba(240,230,208,.6); letter-spacing:.04em; z-index:6; pointer-events:none; }
 
 /* Lightbox */
-#lightbox {
-  display: none; position: fixed; inset: 0; z-index: 9000;
-  background: rgba(10,8,4,0.97);
-  align-items: center; justify-content: center;
-  flex-direction: column;
-}
-#lightbox.show { display: flex; }
-#lightbox-img-wrap {
-  position: relative; max-width: 80vw; max-height: 75vh;
-}
-#lightbox-img {
-  max-width: 80vw; max-height: 75vh;
-  object-fit: contain;
-  display: block;
-  user-select: none;
-  -webkit-user-drag: none;
-  pointer-events: none;
-  filter: sepia(10%);
-}
-/* Big watermark in lightbox — visible diagonal repeating */
-#lightbox-img-wrap::after {
-  content: '';
-  position: absolute; inset: 0;
-  pointer-events: none; z-index: 10;
-  background: repeating-linear-gradient(
-    -45deg,
-    transparent, transparent 60px,
-    rgba(232,184,75,0.06) 60px, rgba(232,184,75,0.06) 62px
-  );
-}
-/* Centered copyright text in lightbox */
-#lightbox-watermark {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  pointer-events: none; z-index: 11;
-  flex-direction: column; gap: .5rem;
-}
-#lightbox-watermark span {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1rem, 2vw, 1.4rem);
-  letter-spacing: .3em; text-transform: uppercase;
-  color: rgba(232,184,75,0.35);
-  text-align: center; line-height: 2;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
-}
-#lightbox-caption {
-  margin-top: 1.5rem;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic; font-size: 1rem;
-  color: rgba(240,230,208,.45); letter-spacing: .06em;
-  text-align: center;
-}
-#lightbox-close {
-  position: absolute; top: 2rem; right: 2.5rem;
-  background: none; border: none; color: rgba(240,230,208,.3);
-  font-size: 1.8rem; cursor: pointer; transition: color .3s;
-  line-height: 1;
-}
-#lightbox-close:hover { color: var(--gold); }
+#lightbox { display:none; position:fixed; inset:0; z-index:9000; background:rgba(10,8,4,0.97); align-items:center; justify-content:center; flex-direction:column; }
+#lightbox.show { display:flex; }
+#lightbox-img-wrap { position:relative; max-width:80vw; max-height:75vh; }
+#lightbox-img { max-width:80vw; max-height:75vh; object-fit:contain; display:block; pointer-events:none; filter:sepia(10%); -webkit-touch-callout:none; }
+#lightbox-img-wrap::after { content:''; position:absolute; inset:0; pointer-events:none; z-index:10; background:repeating-linear-gradient(-45deg,transparent,transparent 60px,rgba(232,184,75,0.06) 60px,rgba(232,184,75,0.06) 62px); }
+#lightbox-watermark { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none; z-index:11; flex-direction:column; gap:.5rem; }
+#lightbox-watermark span { font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,2vw,1.4rem); letter-spacing:.3em; text-transform:uppercase; color:rgba(232,184,75,0.35); text-align:center; line-height:2; text-shadow:0 1px 4px rgba(0,0,0,0.6); }
+#lightbox-caption { margin-top:1.5rem; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1rem; color:rgba(240,230,208,.45); letter-spacing:.06em; text-align:center; }
+#lightbox-close { position:absolute; top:2rem; right:2.5rem; background:none; border:none; color:rgba(240,230,208,.3); font-size:1.8rem; cursor:pointer; transition:color .3s; line-height:1; }
+#lightbox-close:hover { color:var(--gold); }
 
 /* Protection popup */
-#photo-notice {
-  display: none; position: fixed; inset: 0; z-index: 99999;
-  background: rgba(10,8,4,0.95); backdrop-filter: blur(12px);
-  align-items: center; justify-content: center;
-  flex-direction: column; text-align: center; padding: 3rem;
-}
-#photo-notice.show { display: flex; }
-.notice-box {
-  max-width: 520px; border: 1px solid rgba(196,154,42,0.3);
-  padding: 3.5rem 3rem; background: rgba(28,21,8,0.98);
-}
-.notice-diamond {
-  width: 8px; height: 8px; background: var(--gold);
-  transform: rotate(45deg); margin: 0 auto 2rem;
-}
-.notice-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.6rem; font-weight: 300;
-  color: var(--cream); margin-bottom: 1rem;
-}
-.notice-text {
-  font-size: .88rem; line-height: 2;
-  color: rgba(240,230,208,0.6); margin-bottom: 1.5rem;
-}
-.notice-email {
-  display:inline-block; margin-bottom:1.5rem;
-  font-family:'Cormorant Garamond',serif; font-size:1rem;
-  color:var(--gold); letter-spacing:.05em;
-  text-decoration:none;
-  border-bottom:1px solid rgba(196,154,42,0.3);
-  padding-bottom:2px; transition:color .3s, border-color .3s;
-}
+#photo-notice { display:none; position:fixed; inset:0; z-index:99999; background:rgba(10,8,4,0.95); backdrop-filter:blur(12px); align-items:center; justify-content:center; flex-direction:column; text-align:center; padding:3rem; }
+#photo-notice.show { display:flex; }
+.notice-box { max-width:520px; border:1px solid rgba(196,154,42,0.3); padding:3.5rem 3rem; background:rgba(28,21,8,0.98); }
+.notice-diamond { width:8px; height:8px; background:var(--gold); transform:rotate(45deg); margin:0 auto 2rem; }
+.notice-title { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:300; color:var(--cream); margin-bottom:1rem; }
+.notice-text { font-size:.88rem; line-height:2; color:rgba(240,230,208,0.6); margin-bottom:1.5rem; }
+.notice-email { display:inline-block; margin-bottom:1.5rem; font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--gold); letter-spacing:.05em; text-decoration:none; border-bottom:1px solid rgba(196,154,42,0.3); padding-bottom:2px; transition:color .3s, border-color .3s; }
 .notice-email:hover { color:var(--gold-pale); border-color:var(--gold); }
-.notice-close {
-  margin-top: 1rem; background: transparent;
-  border: 1px solid rgba(196,154,42,0.3);
-  color: rgba(240,230,208,.4); padding: .5rem 1.8rem;
-  font-family: 'EB Garamond', serif; font-size: .72rem;
-  letter-spacing: .25em; text-transform: uppercase;
-  cursor: pointer; transition: all .3s;
-}
-.notice-close:hover { border-color: var(--gold); color: var(--gold); }
+.notice-close { margin-top:1rem; background:transparent; border:1px solid rgba(196,154,42,0.3); color:rgba(240,230,208,.4); padding:.5rem 1.8rem; font-family:'EB Garamond',serif; font-size:.72rem; letter-spacing:.25em; text-transform:uppercase; cursor:pointer; transition:all .3s; }
+.notice-close:hover { border-color:var(--gold); color:var(--gold); }
 
-/* Footer */
-footer {
-  padding: 4rem 3rem; text-align: center;
-  border-top: 1px solid rgba(196,154,42,.06);
-}
-footer p {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem; color: rgba(240,230,208,.18); letter-spacing: .2em;
-}
-footer p span { color: var(--amber); opacity: .5; }
-
-/* Reveal */
-.reveal { opacity:0; transform:translateY(28px); transition:opacity .9s ease, transform .9s ease; }
-.reveal.in { opacity:1; transform:translateY(0); }
+footer { padding:4rem 3rem; text-align:center; border-top:1px solid rgba(196,154,42,.06); }
+footer p { font-family:'Cormorant Garamond',serif; font-size:1rem; color:rgba(240,230,208,.18); letter-spacing:.2em; }
+footer p span { color:var(--amber); opacity:.5; }
 
 @media(max-width:768px){
   .nav { padding:1rem 1.5rem; }
@@ -318,7 +132,6 @@ footer p span { color: var(--amber); opacity: .5; }
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- NAV -->
 <nav class="nav">
   <a href="../" class="nav-brand">Abdul Khadar Vakeel</a>
   <a href="../" class="nav-back">
@@ -327,14 +140,12 @@ footer p span { color: var(--amber); opacity: .5; }
   </a>
 </nav>
 
-<!-- HEADER -->
 <div class="page-header">
   <div class="eyebrow">Gallery · അപൂർവ ചിത്രശേഖരം</div>
   <h1 class="heading">Rare <em>Photo Collections</em></h1>
   <div class="hero-line"><div class="diamond"></div></div>
 </div>
 
-<!-- MESSAGE BOX -->
 <div class="message-box">
   <p class="message-text">
     These are rare photographs from Vakeel Sahib's personal collection. We recognize only a few of the faces — if you know someone in these photos, please share in the memories box below. Every name recovered is a piece of history preserved.
@@ -342,93 +153,109 @@ footer p span { color: var(--amber); opacity: .5; }
   <a href="../#memories" class="message-cta">Share What You Know · ഓർമ്മ പങ്കുവെക്കൂ →</a>
 </div>
 
-<!-- PHOTO GRID -->
 <div class="photos-section">
   <div class="photos-grid" id="photoGrid">
 
     <div class="photo-cell" data-src="Vakkel%20%281%29.jpeg" data-caption="Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ">
       <img src="Vakkel%20%281%29.jpeg" alt="Abdul Khadar Vakeel">
       <div class="photo-caption">Abdul Khadar Vakeel</div>
+      <div class="photo-overlay"></div>
     </div>
 
     <div class="photo-cell" data-src="Vakkel%20%281%29.jpg" data-caption="Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ">
       <img src="Vakkel%20%281%29.jpg" alt="Abdul Khadar Vakeel">
       <div class="photo-caption">Abdul Khadar Vakeel</div>
+      <div class="photo-overlay"></div>
     </div>
 
     <div class="photo-cell" data-src="Vakkel%20%281%29.png" data-caption="Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ">
       <img src="Vakkel%20%281%29.png" alt="Abdul Khadar Vakeel">
       <div class="photo-caption">Abdul Khadar Vakeel</div>
+      <div class="photo-overlay"></div>
     </div>
 
     <div class="photo-cell" data-src="Vakkel%20%282%29.jpg" data-caption="Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ">
       <img src="Vakkel%20%282%29.jpg" alt="Abdul Khadar Vakeel">
       <div class="photo-caption">Abdul Khadar Vakeel</div>
+      <div class="photo-overlay"></div>
     </div>
 
     <div class="photo-cell" data-src="Vakkel%20%282%29.png" data-caption="Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ">
       <img src="Vakkel%20%282%29.png" alt="Abdul Khadar Vakeel">
       <div class="photo-caption">Abdul Khadar Vakeel</div>
+      <div class="photo-overlay"></div>
     </div>
 
     <div class="photo-cell" data-src="Vakkel%20%283%29.jpg" data-caption="Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ">
       <img src="Vakkel%20%283%29.jpg" alt="Abdul Khadar Vakeel">
       <div class="photo-caption">Abdul Khadar Vakeel</div>
+      <div class="photo-overlay"></div>
     </div>
 
     <div class="photo-cell" data-src="Vakkel%20%284%29.jpg" data-caption="Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ">
       <img src="Vakkel%20%284%29.jpg" alt="Abdul Khadar Vakeel">
       <div class="photo-caption">Abdul Khadar Vakeel</div>
+      <div class="photo-overlay"></div>
     </div>
 
     <div class="photo-cell" data-src="Vakkel%20%285%29.jpg" data-caption="Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ">
       <img src="Vakkel%20%285%29.jpg" alt="Abdul Khadar Vakeel">
       <div class="photo-caption">Abdul Khadar Vakeel</div>
+      <div class="photo-overlay"></div>
     </div>
 
     <div class="photo-cell" data-src="Vakkel%20%286%29.jpg" data-caption="Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ">
       <img src="Vakkel%20%286%29.jpg" alt="Abdul Khadar Vakeel">
       <div class="photo-caption">Abdul Khadar Vakeel</div>
+      <div class="photo-overlay"></div>
     </div>
 
     <div class="photo-cell" data-src="Vakkel%20%287%29.jpg" data-caption="Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ">
       <img src="Vakkel%20%287%29.jpg" alt="Abdul Khadar Vakeel">
       <div class="photo-caption">Abdul Khadar Vakeel</div>
+      <div class="photo-overlay"></div>
     </div>
 
     <div class="photo-cell" data-src="Vakkel%20%288%29.jpg" data-caption="Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ">
       <img src="Vakkel%20%288%29.jpg" alt="Abdul Khadar Vakeel">
       <div class="photo-caption">Abdul Khadar Vakeel</div>
+      <div class="photo-overlay"></div>
     </div>
 
     <div class="photo-cell" data-src="Vakkel%20%289%29.jpg" data-caption="Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ">
       <img src="Vakkel%20%289%29.jpg" alt="Abdul Khadar Vakeel">
       <div class="photo-caption">Abdul Khadar Vakeel</div>
+      <div class="photo-overlay"></div>
     </div>
 
     <div class="photo-cell" data-src="Vakkel%20%2810%29.jpg" data-caption="Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ">
       <img src="Vakkel%20%2810%29.jpg" alt="Abdul Khadar Vakeel">
       <div class="photo-caption">Abdul Khadar Vakeel</div>
+      <div class="photo-overlay"></div>
     </div>
 
     <div class="photo-cell" data-src="Vakkel%20%2811%29.jpg" data-caption="Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ">
       <img src="Vakkel%20%2811%29.jpg" alt="Abdul Khadar Vakeel">
       <div class="photo-caption">Abdul Khadar Vakeel</div>
+      <div class="photo-overlay"></div>
     </div>
 
     <div class="photo-cell" data-src="Vakkel%20%2812%29.jpg" data-caption="Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ">
       <img src="Vakkel%20%2812%29.jpg" alt="Abdul Khadar Vakeel">
       <div class="photo-caption">Abdul Khadar Vakeel</div>
+      <div class="photo-overlay"></div>
     </div>
 
     <div class="photo-cell" data-src="Vakkel%20%2813%29.jpg" data-caption="Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ">
       <img src="Vakkel%20%2813%29.jpg" alt="Abdul Khadar Vakeel">
       <div class="photo-caption">Abdul Khadar Vakeel</div>
+      <div class="photo-overlay"></div>
     </div>
 
     <div class="photo-cell" data-src="Vakkel%20%2814%29.jpg" data-caption="Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ">
       <img src="Vakkel%20%2814%29.jpg" alt="Abdul Khadar Vakeel">
       <div class="photo-caption">Abdul Khadar Vakeel</div>
+      <div class="photo-overlay"></div>
     </div>
 
   </div>
@@ -458,7 +285,7 @@ footer p span { color: var(--amber); opacity: .5; }
       If you genuinely need a photo for research, publication, or a personal reason,
       please reach out to the family directly — they will be happy to help.
     </p>
-    <a class="notice-email" href="/cdn-cgi/l/email-protection#5f3e3d3b2a3334373e3b3e2d293e343a3a331f38323e3633713c3032"><span class="__cf_email__" data-cfemail="b4d5d6d0c1d8dfdcd5d0d5c6c2d5dfd1d1d8f4d3d9d5ddd89ad7dbd9">[email&#160;protected]</span></a>
+    <a class="notice-email" href="mailto:abdulkhadarvakeel@gmail.com">abdulkhadarvakeel@gmail.com</a>
     <br>
     <button class="notice-close" onclick="document.getElementById('photo-notice').classList.remove('show')">
       Close · അടയ്ക്കുക
@@ -471,7 +298,7 @@ footer p span { color: var(--amber); opacity: .5; }
   <p style="margin-top:.6rem;"><span>© കൊച്ചിയുടെ സംഗീത പൈതൃകം · The Musical Heritage of Kochi</span></p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // Cursor
 const cur = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
@@ -483,17 +310,6 @@ document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
   ring.style.left=rx-16+'px'; ring.style.top=ry-16+'px';
   requestAnimationFrame(tick);
 })();
-document.querySelectorAll('a,button').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.transform='scale(2.5)';ring.style.transform='scale(1.5)';});
-  el.addEventListener('mouseleave',()=>{cur.style.transform='scale(1)';ring.style.transform='scale(1)';});
-});
-
-// Reveal on scroll
-const revs = document.querySelectorAll('.reveal');
-const obs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
-},{threshold:.1});
-revs.forEach(r=>obs.observe(r));
 
 // Lightbox
 function openLightbox(src, caption) {
@@ -512,54 +328,63 @@ document.addEventListener('keydown', function(e){
   if(e.key === 'Escape') closeLightbox();
 });
 
-// Make photo cells open lightbox on both click and tap
-document.querySelectorAll('.photo-cell').forEach(function(cell) {
-  cell.addEventListener('click', function(e) {
-    if (longPressTriggered) return;
-    var src = cell.getAttribute('data-src');
-    var caption = cell.getAttribute('data-caption');
-    if (src) openLightbox(src, caption);
-  });
-});
-
-// ── Image Protection ──
-// Right-click → show notice
-document.addEventListener('contextmenu', function(e) {
-  e.preventDefault();
+// Protection notice
+function showNotice(e) {
+  if(e) e.preventDefault();
   document.getElementById('photo-notice').classList.add('show');
   return false;
-});
+}
 
-// Disable drag on all images
-document.querySelectorAll('img').forEach(function(img){
-  img.addEventListener('dragstart', function(e){ e.preventDefault(); });
-});
+// Right-click blocked everywhere
+document.addEventListener('contextmenu', showNotice);
 
-// Mobile long press protection
-var longPressTimer;
-var longPressTriggered = false;
-document.querySelectorAll('img, .photo-cell').forEach(function(el) {
-  el.addEventListener('touchstart', function(e) {
-    longPressTriggered = false;
-    longPressTimer = setTimeout(function() {
-      longPressTriggered = true;
-      e.preventDefault();
-      document.getElementById('photo-notice').classList.add('show');
-    }, 600);
-  }, { passive: true });
-  el.addEventListener('touchend', function(e) {
-    clearTimeout(longPressTimer);
-  });
-  el.addEventListener('touchmove', function() {
-    clearTimeout(longPressTimer);
-  });
-});
-
-// Block keyboard shortcuts
+// Block Ctrl+S, Ctrl+U, PrintScreen etc
 document.addEventListener('keydown', function(e){
   if(
     (e.ctrlKey && ['s','S','u','U','p','P'].includes(e.key)) ||
     (e.ctrlKey && e.shiftKey && ['i','I','j','J','c','C'].includes(e.key)) ||
     e.key === 'F12' || e.key === 'PrintScreen'
   ){
-    e.preventDefa
+    e.preventDefault();
+    showNotice();
+  }
+});
+
+// Block drag
+document.querySelectorAll('img').forEach(function(img){
+  img.addEventListener('dragstart', function(e){ e.preventDefault(); showNotice(); });
+});
+
+// Photo cell: tap/click = lightbox, long press = notice
+var longPressTimer;
+var longPressTriggered = false;
+
+document.querySelectorAll('.photo-overlay').forEach(function(overlay) {
+  var cell = overlay.closest('.photo-cell');
+
+  // Desktop click
+  overlay.addEventListener('click', function() {
+    if (longPressTriggered) { longPressTriggered = false; return; }
+    openLightbox(cell.getAttribute('data-src'), cell.getAttribute('data-caption'));
+  });
+
+  // Mobile long press
+  overlay.addEventListener('touchstart', function() {
+    longPressTriggered = false;
+    longPressTimer = setTimeout(function() {
+      longPressTriggered = true;
+      showNotice();
+    }, 600);
+  }, { passive: true });
+
+  overlay.addEventListener('touchend', function() {
+    clearTimeout(longPressTimer);
+  });
+
+  overlay.addEventListener('touchmove', function() {
+    clearTimeout(longPressTimer);
+  });
+});
+</script>
+</body>
+</html>
