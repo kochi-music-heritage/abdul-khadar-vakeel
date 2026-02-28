@@ -328,15 +328,31 @@ document.addEventListener('keydown', function(e){
   if(e.key === 'Escape') closeLightbox();
 });
 
-// Protection notice
-function showNotice(e) {
-  if(e) e.preventDefault();
-  document.getElementById('photo-notice').classList.add('show');
-  return false;
-}
+// Photo cell: tap/click = lightbox, long press = notice
+var longPressTimer;
+var longPressTriggered = false;
 
-// Right-click blocked everywhere
-document.addEventListener('contextmenu', showNotice);
+document.querySelectorAll('.photo-overlay').forEach(function(overlay) {
+  var cell = overlay.closest('.photo-cell');
+
+  // Desktop click — open lightbox
+  overlay.addEventListener('click', function() {
+    if (longPressTriggered) { longPressTriggered = false; return; }
+    openLightbox(cell.getAttribute('data-src'), cell.getAttribute('data-caption'));
+  });
+
+  // Mobile long press — show notice
+  overlay.addEventListener('touchstart', function() {
+    longPressTriggered = false;
+    longPressTimer = setTimeout(function() {
+      longPressTriggered = true;
+      document.getElementById('photo-notice').classList.add('show');
+    }, 600);
+  }, { passive: true });
+
+  overlay.addEventListener('touchend', function() { clearTimeout(longPressTimer); });
+  overlay.addEventListener('touchmove', function() { clearTimeout(longPressTimer); });
+});
 
 // Block Ctrl+S, Ctrl+U, PrintScreen etc
 document.addEventListener('keydown', function(e){
@@ -346,13 +362,20 @@ document.addEventListener('keydown', function(e){
     e.key === 'F12' || e.key === 'PrintScreen'
   ){
     e.preventDefault();
-    showNotice();
+    document.getElementById('photo-notice').classList.add('show');
   }
 });
 
 // Block drag
 document.querySelectorAll('img').forEach(function(img){
-  img.addEventListener('dragstart', function(e){ e.preventDefault(); showNotice(); });
+  img.addEventListener('dragstart', function(e){ e.preventDefault(); });
+});
+
+// Right-click → show notice
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+  document.getElementById('photo-notice').classList.add('show');
+  return false;
 });
 
 // Photo cell: tap/click = lightbox, long press = notice
