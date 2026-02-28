@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rare Photo Collections · Abdul Khadar Vakeel</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+Malayalam:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --night: #0a0804;
+  --deep: #110e07;
+  --bark: #1c1508;
+  --amber: #c49a2a;
+  --gold: #e8b84b;
+  --gold-pale: #f5d98a;
+  --cream: #f0e6d0;
+  --parchment: #e8d9be;
+}
+
+body {
+  background: var(--night);
+  color: var(--cream);
+  font-family: 'EB Garamond', 'Noto Serif Malayalam', serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Custom cursor */
+.cursor {
+  position: fixed; width: 8px; height: 8px;
+  background: var(--gold); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transition: transform 0.15s ease; mix-blend-mode: difference;
+}
+.cursor-ring {
+  position: fixed; width: 32px; height: 32px;
+  border: 1px solid rgba(232,184,75,0.4); border-radius: 50%;
+  pointer-events: none; z-index: 9998; transition: all 0.4s ease;
+}
+
+/* Noise overlay */
+body::before {
+  content: ''; position: fixed; inset: 0; opacity: 0.03;
+  pointer-events: none; z-index: 1000;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px;
+}
+
+/* Nav */
+.nav {
+  position: sticky; top: 0; z-index: 500;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.2rem 4rem;
+  background: rgba(10,8,4,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(196,154,42,0.1);
+}
+.nav-brand { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:500; color:var(--gold); letter-spacing:0.05em; text-decoration:none; }
+.nav-back {
+  font-size:.68rem; letter-spacing:.3em; text-transform:uppercase;
+  color:rgba(240,230,208,.4); text-decoration:none; transition:color .3s;
+  display:flex; align-items:center; gap:.6rem;
+}
+.nav-back:hover { color:var(--gold); }
+.nav-back svg { opacity:.6; }
+
+/* Header */
+.page-header {
+  max-width: 860px; margin: 0 auto;
+  padding: 7rem 3rem 4rem;
+  text-align: center;
+}
+.eyebrow {
+  font-size:.65rem; letter-spacing:.5em; text-transform:uppercase;
+  color:var(--amber); margin-bottom:1.5rem; opacity:.8;
+}
+.heading {
+  font-family:'Cormorant Garamond',serif; font-weight:300;
+  font-size:clamp(2.2rem,5vw,4rem); line-height:1.1;
+  color:var(--cream); margin-bottom:2rem;
+}
+.heading em { font-style:italic; color:var(--gold); }
+.hero-line {
+  display:flex; align-items:center; gap:1.5rem;
+  width:180px; margin:0 auto 2.5rem;
+}
+.hero-line::before { content:''; flex:1; height:1px; background:linear-gradient(90deg,transparent,var(--amber)); }
+.hero-line::after  { content:''; flex:1; height:1px; background:linear-gradient(90deg,var(--amber),transparent); }
+.diamond { width:5px; height:5px; background:var(--gold); transform:rotate(45deg); }
+
+/* Message box */
+.message-box {
+  max-width: 700px; margin: 0 auto 6rem;
+  padding: 2.8rem 3.5rem;
+  border: 1px solid rgba(196,154,42,0.15);
+  background: linear-gradient(135deg, rgba(196,154,42,0.05), transparent 60%);
+  position: relative;
+}
+.message-box::before {
+  content:'\201C'; position:absolute; top:-.8rem; left:1.5rem;
+  font-family:'Cormorant Garamond',serif; font-size:5rem;
+  color:var(--amber); opacity:.2; line-height:1;
+}
+.message-text {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:clamp(1.1rem,2vw,1.35rem); line-height:1.9;
+  color:var(--parchment);
+}
+.message-cta {
+  display:inline-block; margin-top:2rem;
+  font-size:.65rem; letter-spacing:.3em; text-transform:uppercase;
+  color:var(--amber); border:1px solid rgba(196,154,42,.3);
+  padding:.5rem 1.5rem; text-decoration:none; transition:all .3s;
+}
+.message-cta:hover { border-color:var(--gold); color:var(--gold-pale); }
+
+/* Photo grid */
+.photos-section { max-width:1100px; margin:0 auto; padding:0 3rem 8rem; }
+.photos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  background: rgba(196,154,42,0.06);
+}
+
+/* Each photo cell */
+.photo-cell {
+  position: relative; overflow: hidden;
+  aspect-ratio: 4/3;
+  background: var(--deep);
+  cursor: pointer;
+}
+.photo-cell img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top;
+  display: block;
+  filter: sepia(20%) grayscale(10%);
+  transition: filter .5s, transform .5s;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+.photo-cell:hover img {
+  filter: sepia(0%) grayscale(0%);
+  transform: scale(1.03);
+}
+
+/* Watermark overlay on every photo */
+.photo-cell::after {
+  content: '© Abdul Khadar Vakeel Family';
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(232,184,75,0.18);
+  pointer-events: none; z-index: 5;
+  text-align: center;
+  writing-mode: horizontal-tb;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent, transparent 55px,
+    rgba(232,184,75,0.04) 55px, rgba(232,184,75,0.04) 57px
+  );
+}
+
+/* Caption bar */
+.photo-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 2rem 1.2rem .9rem;
+  background: linear-gradient(to top, rgba(10,8,4,.9), transparent);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .82rem; font-style: italic;
+  color: rgba(240,230,208,.6); letter-spacing: .04em;
+  z-index: 6; pointer-events: none;
+}
+
+/* Lightbox */
+#lightbox {
+  display: none; position: fixed; inset: 0; z-index: 9000;
+  background: rgba(10,8,4,0.97);
+  align-items: center; justify-content: center;
+  flex-direction: column;
+}
+#lightbox.show { display: flex; }
+#lightbox-img-wrap {
+  position: relative; max-width: 80vw; max-height: 75vh;
+}
+#lightbox-img {
+  max-width: 80vw; max-height: 75vh;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+  filter: sepia(10%);
+}
+/* Big watermark in lightbox — visible diagonal repeating */
+#lightbox-img-wrap::after {
+  content: '';
+  position: absolute; inset: 0;
+  pointer-events: none; z-index: 10;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent, transparent 60px,
+    rgba(232,184,75,0.06) 60px, rgba(232,184,75,0.06) 62px
+  );
+}
+/* Centered copyright text in lightbox */
+#lightbox-watermark {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none; z-index: 11;
+  flex-direction: column; gap: .5rem;
+}
+#lightbox-watermark span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  letter-spacing: .3em; text-transform: uppercase;
+  color: rgba(232,184,75,0.35);
+  text-align: center; line-height: 2;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+#lightbox-caption {
+  margin-top: 1.5rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 1rem;
+  color: rgba(240,230,208,.45); letter-spacing: .06em;
+  text-align: center;
+}
+#lightbox-close {
+  position: absolute; top: 2rem; right: 2.5rem;
+  background: none; border: none; color: rgba(240,230,208,.3);
+  font-size: 1.8rem; cursor: pointer; transition: color .3s;
+  line-height: 1;
+}
+#lightbox-close:hover { color: var(--gold); }
+
+/* Protection popup */
+#photo-notice {
+  display: none; position: fixed; inset: 0; z-index: 99999;
+  background: rgba(10,8,4,0.95); backdrop-filter: blur(12px);
+  align-items: center; justify-content: center;
+  flex-direction: column; text-align: center; padding: 3rem;
+}
+#photo-notice.show { display: flex; }
+.notice-box {
+  max-width: 520px; border: 1px solid rgba(196,154,42,0.3);
+  padding: 3.5rem 3rem; background: rgba(28,21,8,0.98);
+}
+.notice-diamond {
+  width: 8px; height: 8px; background: var(--gold);
+  transform: rotate(45deg); margin: 0 auto 2rem;
+}
+.notice-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 300;
+  color: var(--cream); margin-bottom: 1rem;
+}
+.notice-text {
+  font-size: .88rem; line-height: 2;
+  color: rgba(240,230,208,0.6); margin-bottom: 1.5rem;
+}
+.notice-email {
+  display:inline-block; margin-bottom:1.5rem;
+  font-family:'Cormorant Garamond',serif; font-size:1rem;
+  color:var(--gold); letter-spacing:.05em;
+  text-decoration:none;
+  border-bottom:1px solid rgba(196,154,42,0.3);
+  padding-bottom:2px; transition:color .3s, border-color .3s;
+}
+.notice-email:hover { color:var(--gold-pale); border-color:var(--gold); }
+.notice-close {
+  margin-top: 1rem; background: transparent;
+  border: 1px solid rgba(196,154,42,0.3);
+  color: rgba(240,230,208,.4); padding: .5rem 1.8rem;
+  font-family: 'EB Garamond', serif; font-size: .72rem;
+  letter-spacing: .25em; text-transform: uppercase;
+  cursor: pointer; transition: all .3s;
+}
+.notice-close:hover { border-color: var(--gold); color: var(--gold); }
+
+/* Footer */
+footer {
+  padding: 4rem 3rem; text-align: center;
+  border-top: 1px solid rgba(196,154,42,.06);
+}
+footer p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; color: rgba(240,230,208,.18); letter-spacing: .2em;
+}
+footer p span { color: var(--amber); opacity: .5; }
+
+/* Reveal */
+.reveal { opacity:0; transform:translateY(28px); transition:opacity .9s ease, transform .9s ease; }
+.reveal.in { opacity:1; transform:translateY(0); }
+
+@media(max-width:768px){
+  .nav { padding:1rem 1.5rem; }
+  .page-header { padding:4rem 1.5rem 3rem; }
+  .message-box { padding:2rem 1.5rem; margin:0 1.5rem 4rem; }
+  .photos-section { padding:0 1rem 5rem; }
+  .photos-grid { grid-template-columns:repeat(2,1fr); }
+  #lightbox-img { max-width:95vw; max-height:60vh; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="../" class="nav-brand">Abdul Khadar Vakeel</a>
+  <a href="../" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M5 12l7-7M5 12l7 7"/></svg>
+    Back to Main Site
+  </a>
+</nav>
+
+<!-- HEADER -->
+<div class="page-header reveal">
+  <div class="eyebrow">Gallery · അപൂർവ ചിത്രശേഖരം</div>
+  <h1 class="heading">Rare <em>Photo Collections</em></h1>
+  <div class="hero-line"><div class="diamond"></div></div>
+</div>
+
+<!-- MESSAGE BOX -->
+<div class="message-box reveal">
+  <p class="message-text">
+    These are rare photographs from Vakeel Sahib's personal collection. We recognize only a few of the faces — if you know someone in these photos, please share in the memories box below. Every name recovered is a piece of history preserved.
+  </p>
+  <a href="../#memories" class="message-cta">Share What You Know · ഓർമ്മ പങ്കുവെക്കൂ →</a>
+</div>
+
+<!-- PHOTO GRID -->
+<div class="photos-section">
+  <div class="photos-grid reveal" id="photoGrid">
+
+    <!--
+      ADD YOUR PHOTOS HERE like this:
+      <div class="photo-cell" onclick="openLightbox('photo1.jpg','Caption here')">
+        <img src="photo1.jpg" alt="Description">
+        <div class="photo-caption">Caption here</div>
+      </div>
+    -->
+
+    <!-- EXAMPLE — replace src with your real photos -->
+    <div class="photo-cell" onclick="openLightbox('../abdul_kadhar.png','Abdul Khadar Vakeel · അബ്ദുൾ ഖാദർ വക്കീൽ')">
+      <img src="../abdul_kadhar.png" alt="Abdul Khadar Vakeel">
+      <div class="photo-caption">Abdul Khadar Vakeel</div>
+    </div>
+
+    <div class="photo-cell" onclick="openLightbox('vakeel_photo_12.jpg','Abdul Khadar Vakeel with M.H. Mehaboob (Bhai) & Umbayi · എം.എച്ച്. മെഹബൂബ് (ഭായ്) · ഉമ്പായി')">
+      <img src="vakeel_photo_12.jpg" alt="Abdul Khadar Vakeel with M.H. Mehaboob and Umbayi">
+      <div class="photo-caption">With M.H. Mehaboob (Bhai) & Umbayi</div>
+    </div>
+
+    <!-- Add more photos here the same way -->
+
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div id="lightbox-img-wrap">
+    <img id="lightbox-img" src="" alt="">
+    <div id="lightbox-watermark">
+      <span>© Abdul Khadar Vakeel Family</span>
+      <span style="font-size:.7em;opacity:.7;">അബ്ദുൾ ഖാദർ വക്കീൽ · Private Collection</span>
+    </div>
+  </div>
+  <div id="lightbox-caption"></div>
+</div>
+
+<!-- PROTECTION POPUP -->
+<div id="photo-notice">
+  <div class="notice-box">
+    <div class="notice-diamond"></div>
+    <div class="notice-title">These Photos Belong to<br>the Abdul Khadar Vakeel Family</div>
+    <p class="notice-text">
+      These are rare, personal photographs from the private collection of the Abdul Khadar Vakeel family.
+      They are shared here as a tribute to his memory and legacy.<br><br>
+      If you genuinely need a photo for research, publication, or a personal reason,
+      please reach out to the family directly — they will be happy to help.
+    </p>
+    <a class="notice-email" href="mailto:abdulkhadarvakeel@gmail.com">abdulkhadarvakeel@gmail.com</a>
+    <br>
+    <button class="notice-close" onclick="document.getElementById('photo-notice').classList.remove('show')">
+      Close · അടയ്ക്കുക
+    </button>
+  </div>
+</div>
+
+<footer>
+  <p>അബ്ദുൾ ഖാദർ വക്കീൽ സ്മരണിക</p>
+  <p style="margin-top:.6rem;"><span>© കൊച്ചിയുടെ സംഗീത പൈതൃകം · The Musical Heritage of Kochi</span></p>
+</footer>
+
+<script>
+// Cursor
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx=-100,my=-100,rx=-100,ry=-100;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function tick(){
+  cur.style.left=mx-4+'px'; cur.style.top=my-4+'px';
+  rx+=(mx-rx)*.1; ry+=(my-ry)*.1;
+  ring.style.left=rx-16+'px'; ring.style.top=ry-16+'px';
+  requestAnimationFrame(tick);
+})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.transform='scale(2.5)';ring.style.transform='scale(1.5)';});
+  el.addEventListener('mouseleave',()=>{cur.style.transform='scale(1)';ring.style.transform='scale(1)';});
+});
+
+// Reveal on scroll
+const revs = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+},{threshold:.1});
+revs.forEach(r=>obs.observe(r));
+
+// Lightbox
+function openLightbox(src, caption) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox-caption').textContent = caption || '';
+  document.getElementById('lightbox').classList.add('show');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('show');
+  document.getElementById('lightbox-img').src = '';
+}
+document.getElementById('lightbox').addEventListener('click', function(e){
+  if(e.target === this) closeLightbox();
+});
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeLightbox();
+});
+
+// ── Image Protection ──
+// Right-click → show notice
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+  document.getElementById('photo-notice').classList.add('show');
+  return false;
+});
+
+// Disable drag on all images
+document.querySelectorAll('img').forEach(function(img){
+  img.addEventListener('dragstart', function(e){ e.preventDefault(); });
+});
+
+// Block keyboard shortcuts
+document.addEventListener('keydown', function(e){
+  if(
+    (e.ctrlKey && ['s','S','u','U','p','P'].includes(e.key)) ||
+    (e.ctrlKey && e.shiftKey && ['i','I','j','J','c','C'].includes(e.key)) ||
+    e.key === 'F12' || e.key === 'PrintScreen'
+  ){
+    e.preventDefault();
+    document.getElementById('photo-notice').classList.add('show');
+    return false;
+  }
+});
+
+// Disable selection
+document.addEventListener('selectstart', function(e){
+  if(e.target.tagName === 'IMG') e.preventDefault();
+});
+</script>
+</body>
+</html>
