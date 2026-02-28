@@ -131,8 +131,9 @@ body::before {
   position: relative; overflow: hidden;
   aspect-ratio: 4/3;
   background: var(--deep);
-  cursor: pointer;
+  cursor: pointer !important;
 }
+.photo-cell:active { opacity: 0.85; }
 .photo-cell img {
   width: 100%; height: 100%;
   object-fit: cover; object-position: top;
@@ -140,7 +141,9 @@ body::before {
   filter: sepia(20%) grayscale(10%);
   transition: filter .5s, transform .5s;
   user-select: none;
+  -webkit-user-select: none;
   -webkit-user-drag: none;
+  -webkit-touch-callout: none;
   pointer-events: none;
 }
 .photo-cell:hover img {
@@ -322,14 +325,14 @@ footer p span { color: var(--amber); opacity: .5; }
 </nav>
 
 <!-- HEADER -->
-<div class="page-header reveal">
+<div class="page-header">
   <div class="eyebrow">Gallery · അപൂർവ ചിത്രശേഖരം</div>
   <h1 class="heading">Rare <em>Photo Collections</em></h1>
   <div class="hero-line"><div class="diamond"></div></div>
 </div>
 
 <!-- MESSAGE BOX -->
-<div class="message-box reveal">
+<div class="message-box">
   <p class="message-text">
     These are rare photographs from Vakeel Sahib's personal collection. We recognize only a few of the faces — if you know someone in these photos, please share in the memories box below. Every name recovered is a piece of history preserved.
   </p>
@@ -517,6 +520,23 @@ document.addEventListener('contextmenu', function(e) {
 // Disable drag on all images
 document.querySelectorAll('img').forEach(function(img){
   img.addEventListener('dragstart', function(e){ e.preventDefault(); });
+});
+
+// Mobile long press protection
+var longPressTimer;
+document.querySelectorAll('img, .photo-cell').forEach(function(el) {
+  el.addEventListener('touchstart', function(e) {
+    longPressTimer = setTimeout(function() {
+      e.preventDefault();
+      document.getElementById('photo-notice').classList.add('show');
+    }, 400);
+  }, { passive: false });
+  el.addEventListener('touchend', function() {
+    clearTimeout(longPressTimer);
+  });
+  el.addEventListener('touchmove', function() {
+    clearTimeout(longPressTimer);
+  });
 });
 
 // Block keyboard shortcuts
